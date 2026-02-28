@@ -30,6 +30,9 @@ import {
   Zap,
   Crown,
   Heart,
+  Code2,
+  Github,
+  MoreVertical,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -298,8 +301,18 @@ export function BuilderHeader({
         )}
       </div>
 
-      {/* Mobile: compact publish button only */}
-      <div className="flex md:hidden items-center gap-1.5">
+      {/* Mobile: publish + more menu with code/github */}
+      <div className="flex md:hidden items-center gap-1">
+        <ProjectCodePanel
+          projectId={project?.id}
+          projectName={project?.name}
+          currentProject={currentProjectStructure}
+          versions={versions}
+          isVersionsLoading={isVersionsLoading}
+          onRestoreVersion={onRestoreVersion}
+        />
+        <ProjectGithubControl projectId={project?.id} projectName={project?.name} />
+
         <Button 
           size="sm" 
           className="h-8 gap-1.5 text-xs font-medium"
@@ -311,8 +324,18 @@ export function BuilderHeader({
           ) : (
             <Upload className="w-3.5 h-3.5" />
           )}
-          <span className="sr-only sm:not-sr-only">Опубликовать</span>
         </Button>
+
+        {project?.published_url && (
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="h-8 w-8 text-green-600"
+            onClick={() => window.open(project.published_url!, '_blank')}
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+          </Button>
+        )}
       </div>
       </div>
     </header>
