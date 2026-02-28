@@ -32,6 +32,20 @@ const BUILDER_STEPS: OnboardingStep[] = [
     position: 'bottom',
   },
   {
+    id: 'code',
+    target: '[data-tour="code"]',
+    title: 'Код проекта',
+    description: 'Просматривайте файлы, миграции и edge-функции вашего проекта.',
+    position: 'bottom',
+  },
+  {
+    id: 'github',
+    target: '[data-tour="github"]',
+    title: 'GitHub',
+    description: 'Подключите репозиторий для двусторонней синхронизации кода с GitHub.',
+    position: 'bottom',
+  },
+  {
     id: 'publish',
     target: '[data-tour="publish"]',
     title: 'Публикация',
