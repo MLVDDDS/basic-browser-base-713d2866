@@ -315,17 +315,7 @@ export function InputArea({
         )}
       </AnimatePresence>
       
-      {/* Keyboard hint */}
-      <p className="text-[10px] text-muted-foreground/60 mt-3 text-center">
-        <kbd className="px-1.5 py-0.5 bg-muted/50 rounded text-[9px] font-mono border border-border/30">Shift</kbd>
-        {' + '}
-        <kbd className="px-1.5 py-0.5 bg-muted/50 rounded text-[9px] font-mono border border-border/30">Enter</kbd>
-        {' — новая строка • '}
-        <kbd className="px-1.5 py-0.5 bg-muted/50 rounded text-[9px] font-mono border border-border/30">Ctrl</kbd>
-        {' + '}
-        <kbd className="px-1.5 py-0.5 bg-muted/50 rounded text-[9px] font-mono border border-border/30">V</kbd>
-        {' — вставить файл'}
-      </p>
+      
     </div>
   );
 }
