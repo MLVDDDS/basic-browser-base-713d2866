@@ -376,7 +376,7 @@ const CreateProject = () => {
             <div className="relative group/input">
               {/* Animated snake border — only the 1.5px outline */}
               <div className="absolute -inset-[1.5px] rounded-3xl opacity-0 group-focus-within/input:opacity-100 transition-opacity duration-500 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
-                <div className="absolute inset-[-200%] animate-[snake-spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0%,transparent_60%,hsl(20_85%_55%)_75%,hsl(35_92%_62%)_85%,hsl(20_85%_55%)_95%,transparent_100%)]" />
+                <div className="absolute inset-[-200%] animate-[snake-spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0%,transparent_60%,hsl(175_35%_70%)_72%,hsl(40_40%_80%)_80%,hsl(175_35%_70%)_90%,transparent_100%)]" />
                 {/* Inner mask — cut out everything except the border ring */}
                 <div className="absolute inset-[1.5px] rounded-[calc(1.5rem-1.5px)] bg-background" />
               </div>
