@@ -32,6 +32,15 @@ interface ProjectCreationData {
   prompt: string;
 }
 
+const GREETINGS = [
+  'Какая идея на сегодня?',
+  'Что будем создавать?',
+  'Опиши идею — AI сделает остальное',
+  'Расскажи, что задумал',
+  'Давай построим что-то новое',
+  'Что хочешь воплотить?',
+];
+
 const WEBSITE_PROMPTS = [
   'Лендинг для SaaS продукта с тарифами и формой регистрации',
   'Портфолио дизайнера с галереей работ',
@@ -95,6 +104,7 @@ const CreateProject = () => {
     savedProjectData?.projectType || typeFromUrl || 'website'
   );
   const [prompt, setPrompt] = useState(getInitialPrompt);
+  const [greeting] = useState(() => GREETINGS[Math.floor(Math.random() * GREETINGS.length)]);
   const [isGenerating, setIsGenerating] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showAuthGate, setShowAuthGate] = useState(false);
@@ -280,13 +290,19 @@ const CreateProject = () => {
       <main className="pt-24 pb-16 relative z-10">
         <div className="container mx-auto px-4 max-w-3xl">
           {/* Header */}
-          <PageTitle 
-            description="Опиши идею — AI сгенерирует всё остальное" 
-            centered 
-            className="mb-8"
+          {/* Greeting title — random each visit */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-8"
           >
-            <span style={{ fontFamily: "'Kramola', sans-serif", letterSpacing: '0.08em' }}>Создать проект</span>
-          </PageTitle>
+            <h2 
+              className="text-2xl sm:text-3xl text-muted-foreground/70 font-normal"
+              style={{ fontFamily: "'Kramola', sans-serif", letterSpacing: '0.06em' }}
+            >
+              {greeting}
+            </h2>
+          </motion.div>
 
           {/* Project Type Toggle */}
           <div className="flex justify-center mb-8">
