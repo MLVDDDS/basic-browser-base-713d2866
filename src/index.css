@@ -3,17 +3,8 @@
 @tailwind utilities;
 
 /* ЛЮБАКОДЪ Design System
-   Шрифты: Prata (H1), Onest (всё остальное), Kramola (только "Любакодъ")
+   Шрифты: Onest (всё), Kramola (только "Любакодъ")
 */
-
-/* Prata - Elegant serif for H1 */
-@font-face {
-  font-family: 'Prata';
-  src: url('/fonts/Prata.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* Onest - Modern sans for body and subheadings */
 @font-face {
@@ -89,7 +80,7 @@
     --chart-5: 0 0% 80%;
     --sidebar: 0 0% 98%;
     --font-sans: 'Onest', ui-sans-serif, system-ui, sans-serif;
-    --font-serif: 'Prata', ui-serif, Georgia, serif;
+    --font-serif: 'Onest', ui-sans-serif, system-ui, sans-serif;
     --shadow-2xs: 0 1px 2px 0px hsl(0 0% 0% / 0.03);
     --shadow-xs: 0 1px 2px 0px hsl(0 0% 0% / 0.05);
     --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.08), 0 1px 2px -1px hsl(0 0% 0% / 0.06);
@@ -184,10 +175,10 @@
     font-family: 'Onest', system-ui, -apple-system, sans-serif;
   }
 
-  /* Typography - Prata for H1, Onest for rest */
+  /* Typography - Onest for everything */
   h1 {
-    font-family: 'Prata', 'Georgia', serif;
-    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal;
+    font-family: 'Onest', ui-sans-serif, system-ui, sans-serif;
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold;
     letter-spacing: -0.02em;
     line-height: 1.1;
   }
@@ -208,7 +199,7 @@
   }
 
   .font-serif {
-    font-family: 'Prata', 'Georgia', serif;
+    font-family: 'Onest', ui-sans-serif, system-ui, sans-serif;
   }
 
   .font-sans {
@@ -217,7 +208,7 @@
 
   /* Brand wordmark - Kramola ONLY for "Любакодъ" */
   .brand-wordmark {
-    font-family: 'Kramola', 'Prata', serif;
+    font-family: 'Kramola', sans-serif;
     @apply font-bold tracking-wide;
     letter-spacing: 0.12em;
   }
