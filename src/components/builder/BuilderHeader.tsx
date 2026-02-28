@@ -144,7 +144,7 @@ export function BuilderHeader({
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-medium">Золотые</span>
+                <span className="text-xs font-medium">Рубы</span>
                 <span className="text-xs text-muted-foreground">{usageData.credits} / {usageData.maxCredits}</span>
               </div>
               <Progress value={(usageData.credits / usageData.maxCredits) * 100} className="h-1.5 mt-1" />
@@ -367,7 +367,7 @@ export function BuilderHeader({
           {/* Credits */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium flex items-center gap-1.5"><Heart className="w-3.5 h-3.5 text-primary fill-primary" />Золотые</span>
+              <span className="text-sm font-medium flex items-center gap-1.5"><Heart className="w-3.5 h-3.5 text-primary fill-primary" />Рубы</span>
               <span className="text-sm text-muted-foreground">{usageData.credits} / {usageData.maxCredits}</span>
             </div>
             <Progress value={(usageData.credits / usageData.maxCredits) * 100} className="h-2" />
@@ -396,7 +396,7 @@ export function BuilderHeader({
           <div className="pt-2">
               <Button className="w-full gap-2">
               <Heart className="w-4 h-4" />
-              Докупить золотые
+              Докупить рубы
             </Button>
           </div>
         </div>
