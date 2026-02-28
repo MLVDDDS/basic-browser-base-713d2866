@@ -16,7 +16,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-export const Header = () => {
+interface HeaderProps {
+  iridescent?: boolean;
+}
+
+export const Header = ({ iridescent = false }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -50,7 +54,7 @@ export const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <Logo size="sm" />
+            <Logo size="sm" iridescent={iridescent} />
           </Link>
 
           {/* Navigation - visible on tablets and up */}
