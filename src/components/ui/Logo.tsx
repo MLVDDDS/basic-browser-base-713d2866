@@ -4,9 +4,10 @@ import logoSvg from '@/assets/logo.svg';
 interface LogoProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg';
+  iridescent?: boolean;
 }
 
-export const Logo = ({ className, size = 'md' }: LogoProps) => {
+export const Logo = ({ className, size = 'md', iridescent = false }: LogoProps) => {
   const sizeClasses = {
     sm: { icon: 'h-7 w-7', text: 'text-base', gap: 'gap-1.5' },
     md: { icon: 'h-9 w-9', text: 'text-lg', gap: 'gap-2' },
@@ -18,7 +19,7 @@ export const Logo = ({ className, size = 'md' }: LogoProps) => {
       <div 
         className={cn(
           sizeClasses[size].icon, 
-          'bg-foreground'
+          iridescent ? 'iridescent-logo' : 'bg-foreground'
         )}
         style={{
           WebkitMaskImage: `url(${logoSvg})`,
@@ -31,7 +32,11 @@ export const Logo = ({ className, size = 'md' }: LogoProps) => {
           maskPosition: 'center',
         }}
       />
-      <span className={cn('brand-wordmark text-foreground', sizeClasses[size].text)}>
+      <span className={cn(
+        'brand-wordmark',
+        iridescent ? 'iridescent-text' : 'text-foreground',
+        sizeClasses[size].text
+      )}>
         ЛЮБАКОДЪ
       </span>
     </div>

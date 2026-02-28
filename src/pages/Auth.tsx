@@ -380,8 +380,7 @@ const Auth = ({ mode }: AuthProps) => {
   }, [googleClientId, handleGoogleCredential]);
 
   const handleTelegramLogin = () => {
-    // TODO: Implement Telegram Login when configured
-    toast.info('Telegram авторизация будет доступна скоро');
+    // TODO: подключить Telegram Login Widget
   };
 
   const handleGoBack = () => {
@@ -423,7 +422,7 @@ const Auth = ({ mode }: AuthProps) => {
           className="text-center mb-8"
         >
           <Link to="/">
-            <Logo size="lg" className="justify-center" />
+            <Logo size="lg" className="justify-center" iridescent />
           </Link>
         </motion.div>
 
@@ -589,12 +588,11 @@ const Auth = ({ mode }: AuthProps) => {
                 variant="outline" 
                 className="w-full gap-3" 
                 size="lg"
-                disabled
                 onClick={handleTelegramLogin}
                 type="button"
               >
                 <TelegramIcon />
-                Войти через Telegram (скоро)
+                Войти через Telegram
               </Button>
 
             </motion.div>
