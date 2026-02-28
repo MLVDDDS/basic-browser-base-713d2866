@@ -15,8 +15,8 @@ export default {
   	},
   	extend: {
 		fontFamily: {
-			sans: [
-				'Onest',
+		sans: [
+				'Montserrat',
 				'ui-sans-serif',
 				'system-ui',
 				'-apple-system',
