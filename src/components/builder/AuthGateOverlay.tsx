@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Lock, Sparkles, ArrowRight, Wand2, Layers, Palette, Rocket, Check, X } from 'lucide-react';
+import { Lock, Sparkles, ArrowRight, Wand2, Layers, Palette, Rocket, Check, X, Save, History, Globe } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 interface AuthGateOverlayProps {
@@ -193,9 +193,9 @@ export const AuthGateOverlay = ({
           transition={{ delay: 0.6 }}
         >
           {[
-            { text: 'Сохранение всех проектов', icon: '💾' },
-            { text: 'История изменений', icon: '📜' },
-            { text: 'Публикация на свой домен', icon: '🚀' },
+            { text: 'Сохранение всех проектов', icon: Save },
+            { text: 'История изменений', icon: History },
+            { text: 'Публикация на свой домен', icon: Globe },
           ].map((feature, i) => (
             <motion.div
               key={feature.text}
@@ -204,7 +204,7 @@ export const AuthGateOverlay = ({
               transition={{ delay: 0.7 + i * 0.1 }}
               className="flex items-center gap-3 text-sm text-muted-foreground bg-muted/30 rounded-xl px-4 py-2.5"
             >
-              <span className="text-base">{feature.icon}</span>
+              <feature.icon className="w-4 h-4 text-primary flex-shrink-0" />
               {feature.text}
             </motion.div>
           ))}
@@ -225,10 +225,6 @@ export const AuthGateOverlay = ({
             Войти или зарегистрироваться
             <ArrowRight className="w-4 h-4" />
           </Button>
-          
-          <p className="text-center text-xs text-muted-foreground">
-            Бесплатно • Без карты • 30 секунд
-          </p>
         </motion.div>
       </motion.div>
     </motion.div>
