@@ -39,7 +39,7 @@ export const Header = () => {
 
   const navLinks = [
     { href: '/dashboard', label: 'Проекты' },
-    { href: '/docs/help', label: 'Помощь' },
+    { href: '/docs/faq', label: 'Помощь' },
     { href: '/docs/contact', label: 'Контакты' },
   ];
 

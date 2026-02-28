@@ -31,7 +31,7 @@ export const Footer = () => {
     resources: [
       { label: 'Как это работает', href: '/docs/how-it-works', icon: Lightbulb },
       { label: 'Документация', href: '/docs', icon: BookOpen },
-      { label: 'Помощь', href: '/docs/help', icon: HelpCircle },
+      { label: 'Помощь', href: '/docs/faq', icon: HelpCircle },
       { label: 'Контакты', href: '/docs/contact', icon: Mail },
     ],
     company: [
