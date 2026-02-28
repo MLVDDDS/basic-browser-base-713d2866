@@ -435,49 +435,52 @@
   .iridescent-logo {
     background: linear-gradient(
       90deg,
-      hsl(43 80% 50%),
-      hsl(38 90% 65%),
-      hsl(0 0% 78%),
-      hsl(45 70% 55%),
-      hsl(30 85% 48%),
-      hsl(0 0% 85%),
-      hsl(43 80% 50%)
+      hsl(45 90% 50%),
+      hsl(0 85% 45%),
+      hsl(45 95% 55%),
+      hsl(0 0% 10%),
+      hsl(0 80% 40%),
+      hsl(42 92% 52%),
+      hsl(0 85% 45%),
+      hsl(45 90% 50%)
     );
-    background-size: 300% 100%;
-    animation: iridescent-text 6s ease-in-out infinite;
+    background-size: 400% 100%;
+    animation: iridescent-text 5s ease-in-out infinite;
     transition: animation-duration 0.3s ease, transform 0.3s ease, filter 0.3s ease;
   }
 
   .dark .iridescent-logo {
     background: linear-gradient(
       90deg,
-      hsl(43 85% 60%),
-      hsl(38 95% 72%),
-      hsl(0 0% 85%),
-      hsl(45 80% 65%),
-      hsl(30 90% 58%),
+      hsl(45 95% 58%),
+      hsl(0 90% 52%),
+      hsl(45 98% 62%),
       hsl(0 0% 90%),
-      hsl(43 85% 60%)
+      hsl(0 85% 48%),
+      hsl(42 95% 60%),
+      hsl(0 90% 52%),
+      hsl(45 95% 58%)
     );
-    background-size: 300% 100%;
+    background-size: 400% 100%;
   }
 
   .iridescent-text {
     background: linear-gradient(
       90deg,
-      hsl(43 80% 50%),
-      hsl(38 90% 65%),
-      hsl(0 0% 78%),
-      hsl(45 70% 55%),
-      hsl(30 85% 48%),
-      hsl(0 0% 85%),
-      hsl(43 80% 50%)
+      hsl(45 90% 50%),
+      hsl(0 85% 45%),
+      hsl(45 95% 55%),
+      hsl(0 0% 10%),
+      hsl(0 80% 40%),
+      hsl(42 92% 52%),
+      hsl(0 85% 45%),
+      hsl(45 90% 50%)
     );
-    background-size: 300% 100%;
+    background-size: 400% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: iridescent-text 6s ease-in-out infinite;
+    animation: iridescent-text 5s ease-in-out infinite;
     transition: transform 0.3s ease, filter 0.3s ease;
   }
 
@@ -487,28 +490,29 @@
   }
 
   .logo-hover-wrapper:hover .iridescent-logo {
-    animation: iridescent-text 1.5s ease-in-out infinite;
+    animation: iridescent-text 1.2s ease-in-out infinite;
     transform: scale(1.1);
-    filter: brightness(1.15) saturate(1.3);
+    filter: brightness(1.2) saturate(1.4);
   }
 
   .logo-hover-wrapper:hover .iridescent-text {
-    animation: iridescent-text 1.5s ease-in-out infinite;
-    filter: brightness(1.15);
+    animation: iridescent-text 1.2s ease-in-out infinite;
+    filter: brightness(1.2);
   }
 
   .dark .iridescent-text {
     background: linear-gradient(
       90deg,
-      hsl(43 85% 60%),
-      hsl(38 95% 72%),
-      hsl(0 0% 85%),
-      hsl(45 80% 65%),
-      hsl(30 90% 58%),
+      hsl(45 95% 58%),
+      hsl(0 90% 52%),
+      hsl(45 98% 62%),
       hsl(0 0% 90%),
-      hsl(43 85% 60%)
+      hsl(0 85% 48%),
+      hsl(42 95% 60%),
+      hsl(0 90% 52%),
+      hsl(45 95% 58%)
     );
-    background-size: 300% 100%;
+    background-size: 400% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
