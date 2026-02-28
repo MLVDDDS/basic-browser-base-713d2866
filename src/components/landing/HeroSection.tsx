@@ -71,7 +71,7 @@ export const HeroSection = () => {
                 <VoiceWave />
               </div>
               
-              <span className="iridescent-text block pt-2 text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-wide" style={{ fontFamily: "'Kramola', 'Prata', serif", letterSpacing: '0.08em' }}>
+              <span className="iridescent-text block pt-2 text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-wide" style={{ fontFamily: "'Kramola', sans-serif", letterSpacing: '0.08em' }}>
                 Любакодъ,
               </span>
               <h1 className="leading-tight font-sans font-semibold mt-2 text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl">
