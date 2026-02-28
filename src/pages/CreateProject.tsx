@@ -294,8 +294,11 @@ const CreateProject = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
+      {/* Checkerboard background pattern - subtle transparency look */}
+      <div className="fixed inset-0 checkerboard-lg opacity-40 pointer-events-none z-0" />
+      
       {/* Iridescence Background Effect - Fixed to cover entire page */}
-      <div className="fixed inset-0 opacity-30 pointer-events-none z-0">
+      <div className="fixed inset-0 opacity-20 pointer-events-none z-[1]">
         <Iridescence
           speed={0.8}
           amplitude={0.15}
@@ -318,11 +321,11 @@ const CreateProject = () => {
 
           {/* Project Type Toggle */}
           <div className="flex justify-center mb-8">
-            <div className="inline-flex items-center bg-muted rounded-full p-1 relative">
+            <div className="inline-flex items-center glass rounded-full p-1 relative">
               <button
                 onClick={() => setProjectType('website')}
                 className={cn(
-                  'relative z-10 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors',
+                  'relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all',
                   projectType === 'website' 
                     ? 'text-foreground' 
                     : 'text-muted-foreground hover:text-foreground'
@@ -331,7 +334,7 @@ const CreateProject = () => {
                 {projectType === 'website' && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-background rounded-full shadow-sm"
+                    className="absolute inset-0 glass-strong rounded-full shadow-md"
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   />
                 )}
@@ -341,7 +344,7 @@ const CreateProject = () => {
               <button
                 onClick={() => setProjectType('tma')}
                 className={cn(
-                  'relative z-10 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors',
+                  'relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all',
                   projectType === 'tma' 
                     ? 'text-foreground' 
                     : 'text-muted-foreground hover:text-foreground'
@@ -350,7 +353,7 @@ const CreateProject = () => {
                 {projectType === 'tma' && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-background rounded-full shadow-sm"
+                    className="absolute inset-0 glass-strong rounded-full shadow-md"
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   />
                 )}
@@ -406,9 +409,9 @@ const CreateProject = () => {
               onPaste={handlePaste}
               placeholder={`${typingPlaceholder || 'Опиши свой проект...'}${showCursor ? '|' : ''}`}
               className={cn(
-                "min-h-[120px] pl-12 pr-14 pt-4 text-lg resize-none rounded-3xl border-2",
-                "border-border/40 bg-background/60 backdrop-blur-md",
-                "focus:border-primary/50 focus:bg-background/70",
+                "min-h-[120px] pl-12 pr-14 pt-4 text-lg resize-none rounded-3xl border",
+                "border-border/30 glass",
+                "focus:border-primary/40 focus:bg-background/70",
                 "transition-all duration-300 shadow-lg shadow-black/5 dark:shadow-black/20",
                 fileUpload.hasFiles ? "pb-24" : "pb-16"
               )}
@@ -467,7 +470,7 @@ const CreateProject = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.2, delay: index * 0.05 }}
                     onClick={() => setPrompt(example)}
-                    className="text-sm px-4 py-2.5 rounded-xl bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-colors text-left sm:text-center sm:rounded-full sm:py-1.5 sm:px-3"
+                    className="text-sm px-4 py-2.5 rounded-xl glass hover:bg-background/70 text-muted-foreground hover:text-foreground transition-all text-left sm:text-center sm:rounded-full sm:py-1.5 sm:px-3"
                   >
                     {example}
                   </motion.button>
@@ -479,7 +482,7 @@ const CreateProject = () => {
           {/* Advanced Options - Collapsible */}
           <Collapsible open={showOptions} onOpenChange={setShowOptions}>
             <CollapsibleTrigger asChild>
-              <button className="w-full flex items-center justify-center gap-2 py-3 text-sm text-muted-foreground hover:text-foreground transition-colors border-t border-border">
+              <button className="w-full flex items-center justify-center gap-2 py-3 text-sm text-muted-foreground hover:text-foreground transition-colors border-t border-border/30">
                 <Settings2 className="w-4 h-4" />
                 <span>Расширенные настройки</span>
                 <ChevronDown className={cn('w-4 h-4 transition-transform', showOptions && 'rotate-180')} />
@@ -519,10 +522,10 @@ const CreateProject = () => {
                         transition={{ duration: 0.2, delay: 0.15 + index * 0.03 }}
                         onClick={() => toggleLibrary(lib.id)}
                         className={cn(
-                          'flex items-center gap-2 px-3 py-2.5 rounded-lg border transition-all text-sm backdrop-blur-sm',
+                          'flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all text-sm',
                           isSelected 
-                            ? 'border-primary bg-primary/10 text-foreground' 
-                            : 'border-border/50 bg-background/30 hover:border-primary/50 hover:bg-background/50 text-muted-foreground'
+                            ? 'glass-strong border-primary/40 text-foreground shadow-sm' 
+                            : 'glass hover:border-primary/30 hover:bg-background/60 text-muted-foreground'
                         )}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
