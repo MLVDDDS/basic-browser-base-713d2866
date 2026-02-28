@@ -120,23 +120,6 @@ export const ChatPanel = memo<ChatPanelProps>(function ChatPanel(props) {
     >
 
       <div className="flex-1 flex flex-col min-h-0">
-        {/* Expand/Collapse toggle for detailed view */}
-        {FEATURE_FLAGS.ENABLE_EXPANDED_VIEW_MODE && messages.length > 0 && (
-          <div className="flex items-center justify-end px-4 py-2 border-b border-border/50">
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={() => setIsExpandedView(!isExpandedView)} 
-              className="h-7 text-xs gap-1.5 text-muted-foreground hover:text-foreground"
-            >
-              {isExpandedView ? (
-                <><Minimize2 className="w-3.5 h-3.5" />Компактно</>
-              ) : (
-                <><Maximize2 className="w-3.5 h-3.5" />Подробно</>
-              )}
-            </Button>
-          </div>
-        )}
 
         {/* Messages ScrollArea */}
         <ScrollArea className="flex-1 h-0">
