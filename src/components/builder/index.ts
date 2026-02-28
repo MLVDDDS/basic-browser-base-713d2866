@@ -2,7 +2,7 @@
 export { AddSectionModal } from './AddSectionModal';
 export { AuthGateOverlay } from './AuthGateOverlay';
 export { DraggableSection } from './DraggableSection';
-export { EffectsPanel } from './EffectsPanel';
+
 export { SectionItem } from './SectionItem';
 export { SectionList } from './SectionList';
 export { SectionPreview } from './SectionPreview';

@@ -1,6 +1,6 @@
 /**
  * 🎯 BuilderHeader v2.0
- * Simplified header without credits display and auto-healing UI
+ * Simplified header without credits display, auto-healing UI, and effects library
  */
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -16,14 +16,10 @@ import {
   Globe,
   Send,
   Loader2,
-  Library,
   Upload,
   ExternalLink,
   Copy,
 } from 'lucide-react';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import type { EffectDefinition } from '@/types/siteSpec';
 import type { ProjectStructure } from '@/types/project';
 import type { ProjectVersion } from '@/hooks/useProjectVersions';
 import { ProjectCodePanel } from './ProjectCodePanel';
@@ -57,14 +53,6 @@ interface BuilderHeaderProps {
   healingQueue: number;
   healingStats: { processed: number; success: number; failed: number };
   
-  // Library
-  isLibraryOpen: boolean;
-  onLibraryOpenChange: (open: boolean) => void;
-  libraryCategory: string;
-  onLibraryCategoryChange: (category: string) => void;
-  filteredEffects: EffectDefinition[];
-  onApplyEffect: (effect: EffectDefinition) => void;
-  
   // Publish
   project: { id?: string; name?: string; published_url?: string | null } | null;
   currentProjectStructure: ProjectStructure | null;
@@ -83,28 +71,6 @@ const tmaScaleOptions = [
   { value: 1.5, label: '150%' },
 ];
 
-const LibraryItem = ({ effect, onApply }: { effect: EffectDefinition; onApply: () => void }) => (
-  <button
-    onClick={onApply}
-    className="w-full text-left p-3 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all group"
-  >
-    <div className="flex items-center justify-between mb-1">
-      <span className="text-sm font-medium">{effect.name}</span>
-      <span className={cn(
-        'text-[9px] px-1.5 py-0.5 rounded-full',
-        effect.performance === 'light' && 'bg-green-500/10 text-green-500',
-        effect.performance === 'medium' && 'bg-yellow-500/10 text-yellow-500',
-        effect.performance === 'heavy' && 'bg-red-500/10 text-red-500',
-      )}>
-        {effect.performance === 'light' ? 'Лёгкий' : effect.performance === 'medium' ? 'Средний' : 'Тяжёлый'}
-      </span>
-    </div>
-    <p className="text-xs text-muted-foreground line-clamp-2 mb-2">{effect.description}</p>
-    <div className="flex items-center justify-between">
-      <span className="text-[10px] text-muted-foreground capitalize">{effect.type}</span>
-    </div>
-  </button>
-);
 
 export function BuilderHeader({
   projectType,
@@ -114,12 +80,6 @@ export function BuilderHeader({
   onTmaScaleChange,
   // credits - not displayed
   // canUndo, canRedo, onUndo, onRedo - removed from UI
-  isLibraryOpen,
-  onLibraryOpenChange,
-  libraryCategory,
-  onLibraryCategoryChange,
-  filteredEffects,
-  onApplyEffect,
   project,
   currentProjectStructure,
   versions,
@@ -208,73 +168,6 @@ export function BuilderHeader({
         )}
 
         <div className="h-6 w-px bg-border/60" />
-
-        {/* Library Sheet */}
-        <Sheet open={isLibraryOpen} onOpenChange={onLibraryOpenChange}>
-          <SheetTrigger asChild>
-            <Button 
-              data-tour="library" 
-              variant="outline" 
-              size="sm" 
-              className="h-9 gap-2 text-xs font-medium hover:bg-primary/5 hover:border-primary/30 transition-all"
-            >
-              <Library className="w-4 h-4" /> Библиотека
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[380px] sm:w-[420px] p-0">
-            <SheetHeader className="p-4 border-b border-border">
-              <SheetTitle className="flex items-center gap-2 text-base">
-                <Library className="w-4 h-4 text-primary" />
-                Библиотека эффектов
-              </SheetTitle>
-            </SheetHeader>
-
-            <div className="flex gap-1.5 p-4 border-b border-border overflow-x-auto">
-              {[
-                { id: 'all', label: 'Все' }, 
-                { id: '3d', label: '3D' }, 
-                { id: 'background', label: 'Фон' }, 
-                { id: 'text', label: 'Текст' }, 
-                { id: 'cards', label: 'Карточки' }, 
-                { id: 'scroll', label: 'Скролл' }
-              ].map((cat) => (
-                <button 
-                  key={cat.id} 
-                  onClick={() => onLibraryCategoryChange(cat.id)} 
-                  className={cn(
-                    'px-3 py-1.5 rounded-md text-xs font-medium whitespace-nowrap transition-all', 
-                    libraryCategory === cat.id 
-                      ? 'bg-primary text-primary-foreground shadow-sm' 
-                      : 'bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
-
-            <ScrollArea className="h-[calc(100vh-180px)]">
-              <div className="p-4 space-y-3">
-                {filteredEffects.length === 0 ? (
-                  <div className="text-center py-12 text-sm text-muted-foreground">
-                    Нет эффектов в этой категории
-                  </div>
-                ) : (
-                  filteredEffects.map((effect) => (
-                    <LibraryItem 
-                      key={effect.id} 
-                      effect={effect} 
-                      onApply={() => {
-                        onApplyEffect(effect);
-                        onLibraryOpenChange(false);
-                      }} 
-                    />
-                  ))
-                )}
-              </div>
-            </ScrollArea>
-          </SheetContent>
-        </Sheet>
 
         <ProjectCodePanel
           projectId={project?.id}

@@ -32,13 +32,6 @@ const BUILDER_STEPS: OnboardingStep[] = [
     position: 'bottom',
   },
   {
-    id: 'library',
-    target: '[data-tour="library"]',
-    title: 'Библиотека эффектов',
-    description: 'Готовые 3D-эффекты, анимации и стили. Один клик — и эффект на сайте.',
-    position: 'bottom',
-  },
-  {
     id: 'publish',
     target: '[data-tour="publish"]',
     title: 'Публикация',
