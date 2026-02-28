@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { PageTransition } from './PageTransition';
-import { ProtectedRoute } from './ProtectedRoute';
+// ProtectedRoute available but not used during frontend-only development
 
 import Index from '@/pages/Index';
 import Pricing from '@/pages/Pricing';
@@ -36,17 +36,9 @@ export const AnimatedRoutes = () => {
         
         <Route path="/create" element={<PageTransition><CreateProject /></PageTransition>} />
         
-        {/* Builder - only protected route, requires auth (dev mode bypasses) */}
-        <Route path="/builder" element={
-          <ProtectedRoute>
-            <PageTransition><Builder /></PageTransition>
-          </ProtectedRoute>
-        } />
-        <Route path="/builder/:id" element={
-          <ProtectedRoute>
-            <PageTransition><Builder /></PageTransition>
-          </ProtectedRoute>
-        } />
+        {/* Builder - no auth gate during frontend development */}
+        <Route path="/builder" element={<PageTransition><Builder /></PageTransition>} />
+        <Route path="/builder/:id" element={<PageTransition><Builder /></PageTransition>} />
         
         <Route path="/login" element={<PageTransition><Auth mode="login" /></PageTransition>} />
         <Route path="/signup" element={<PageTransition><Auth mode="signup" /></PageTransition>} />

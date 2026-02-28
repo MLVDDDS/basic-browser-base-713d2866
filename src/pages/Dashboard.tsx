@@ -334,7 +334,7 @@ const Dashboard = () => {
 
           {/* Stats - only show for my projects */}
           {tabMode === 'my' && isAuthenticated && (
-            <div className="grid grid-cols-3 gap-4 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8">
               <div className="card-base p-4">
                 <div className="text-2xl font-bold">{stats.total}</div>
                 <div className="text-sm text-muted-foreground">Всего проектов</div>
