@@ -103,7 +103,7 @@ const FAQ = () => {
       questions: [
         {
           question: 'Как связаться с поддержкой?',
-          answer: 'Напиши нам в Telegram (@lyubakod) или на email support@lyubakod.app. Отвечаем в течение нескольких часов.'
+          answer: 'Напиши нам в Telegram (@lybacode) или на email info@lybacode.ink. Отвечаем в течение нескольких часов.'
         },
         {
           question: 'Что делать, если что-то не работает?',
@@ -178,7 +178,7 @@ const FAQ = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a 
-              href="https://t.me/lyubakod" 
+              href="https://t.me/lybacode" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
@@ -187,7 +187,7 @@ const FAQ = () => {
               Telegram
             </a>
             <a 
-              href="mailto:support@lyubakod.app"
+              href="mailto:info@lybacode.ink"
               className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-border hover:bg-card transition-colors"
             >
               <Zap className="w-4 h-4" />

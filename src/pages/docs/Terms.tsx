@@ -142,7 +142,7 @@ const Terms = () => {
         <h2 className="text-xl font-semibold mb-4">10. Контакты</h2>
         <p className="text-muted-foreground leading-relaxed">
           По вопросам, связанным с Условиями использования, свяжитесь с нами через{' '}
-          <a href="https://t.me/lyubakod" className="text-primary hover:underline">
+          <a href="https://t.me/lybacode" className="text-primary hover:underline">
             Telegram
           </a>.
         </p>
