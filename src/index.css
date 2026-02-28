@@ -396,6 +396,30 @@
     background: hsl(var(--muted-foreground) / 0.5);
   }
 
+  /* Thin scrollbar for textareas and compact areas */
+  .thin-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 12px 0;
+  }
+
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.25);
+    border-radius: 9999px;
+  }
+
+  .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.4);
+  }
+
+  .thin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.25) transparent;
+  }
+
   /* Focus ring */
   .focus-ring {
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
@@ -466,31 +490,35 @@
 
   .iridescent-text {
     background: linear-gradient(
-      135deg,
-      hsl(12 55% 40%),
-      hsl(18 60% 48%),
-      hsl(28 65% 52%),
-      hsl(18 60% 48%),
-      hsl(12 55% 40%)
+      90deg,
+      hsl(15 80% 50%),
+      hsl(30 90% 55%),
+      hsl(45 95% 60%),
+      hsl(20 85% 52%),
+      hsl(350 70% 48%),
+      hsl(30 90% 55%),
+      hsl(15 80% 50%)
     );
-    background-size: 300% 100%;
+    background-size: 400% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: iridescent-text 6s ease-in-out infinite;
+    animation: iridescent-text 5s ease-in-out infinite;
     transition: transform 0.3s ease, filter 0.3s ease;
   }
 
   .dark .iridescent-text {
     background: linear-gradient(
-      135deg,
-      hsl(18 55% 55%),
-      hsl(24 62% 60%),
-      hsl(32 68% 65%),
-      hsl(24 62% 60%),
-      hsl(18 55% 55%)
+      90deg,
+      hsl(20 85% 58%),
+      hsl(35 92% 62%),
+      hsl(50 98% 68%),
+      hsl(25 88% 60%),
+      hsl(355 75% 55%),
+      hsl(35 92% 62%),
+      hsl(20 85% 58%)
     );
-    background-size: 300% 100%;
+    background-size: 400% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

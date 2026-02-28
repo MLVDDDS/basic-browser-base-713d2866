@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import Iridescence from '@/components/effects/Iridescence';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,7 +22,6 @@ import {
   Wand2,
   Loader2,
   Paperclip,
-  RefreshCw,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -333,9 +333,20 @@ const CreateProject = () => {
             {/* Drop zone overlay */}
             <DropZoneOverlay isVisible={isDragging} className="rounded-3xl" />
             
-            <div className="absolute left-4 top-4 z-10">
-              <Wand2 className="w-5 h-5 text-primary" />
-            </div>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={() => {
+                    toast.info('Улучшение промпта будет доступно после подключения бэкенда');
+                  }}
+                  disabled={isGenerating || !prompt.trim()}
+                  className="absolute left-4 top-4 z-10 p-1 rounded-lg text-primary hover:text-primary/80 hover:bg-muted/50 transition-colors disabled:opacity-40 disabled:pointer-events-none"
+                >
+                  <Wand2 className="w-5 h-5" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">Улучшить промпт</TooltipContent>
+            </Tooltip>
             
             {/* Attachment button */}
             <button
@@ -370,7 +381,7 @@ const CreateProject = () => {
               placeholder={`${typingPlaceholder || 'Опиши свой проект...'}${showCursor ? '|' : ''}`}
               className={cn(
                 "min-h-[120px] max-h-[240px] pl-12 pr-14 pt-4 text-lg resize-none rounded-3xl border",
-                "border-border/30 glass overflow-y-auto",
+                "border-border/30 glass overflow-y-auto thin-scrollbar",
                 "focus:border-primary/40 focus:bg-background/70",
                 "transition-all duration-300 shadow-lg shadow-black/5 dark:shadow-black/20",
                 fileUpload.hasFiles ? "pb-24" : "pb-16"
@@ -387,23 +398,7 @@ const CreateProject = () => {
               </div>
             )}
             
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                {prompt.trim().length > 10 && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => {
-                      toast.info('Улучшение промпта будет доступно после подключения бэкенда');
-                    }}
-                    disabled={isGenerating}
-                    className="gap-1.5 text-xs text-muted-foreground hover:text-foreground h-7 px-2"
-                  >
-                    <RefreshCw className="w-3.5 h-3.5" />
-                    Улучшить
-                  </Button>
-                )}
-              </div>
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-end">
               <Button 
                 onClick={handleGenerate}
                 disabled={(!prompt.trim() && !fileUpload.hasFiles) || isGenerating}
