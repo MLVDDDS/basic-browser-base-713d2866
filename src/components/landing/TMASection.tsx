@@ -137,7 +137,7 @@ export const TMASection = () => {
 
           {/* Content */}
           <div className="order-1 lg:order-2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 md:mb-3">Обернуть в Telegram</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-2 md:mb-3">Обернуть в Telegram</h2>
             <p className="text-muted-foreground text-base md:text-lg mb-6 md:mb-8 max-w-md">
               Готовый сайт → Mini App за 1 клик. Минимум настроек.
             </p>

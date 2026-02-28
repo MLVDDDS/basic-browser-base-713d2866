@@ -84,7 +84,7 @@ export const PricingSection = () => {
       <div className="container-main">
         {/* Header */}
         <div className="text-center mb-6 md:mb-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 md:mb-3">Тарифы</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-2 md:mb-3">Тарифы</h2>
           <p className="text-muted-foreground text-base md:text-lg">
             Начни бесплатно, масштабируй по мере роста
           </p>

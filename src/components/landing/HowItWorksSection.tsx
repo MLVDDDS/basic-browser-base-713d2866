@@ -63,7 +63,7 @@ export const HowItWorksSection = () => {
           <div>
             {/* Header */}
             <div className="mb-8 md:mb-10">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 md:mb-3">Сайт за вечер</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-2 md:mb-3">Сайт за вечер</h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-md">
                 Четыре шага от идеи до готового проекта
               </p>
