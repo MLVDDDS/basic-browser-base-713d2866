@@ -1,0 +1,678 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ЛЮБАКОДЪ Design System
+   Шрифты: Prata (H1), Onest (всё остальное), Kramola (только "Любакодъ")
+*/
+
+/* Prata - Elegant serif for H1 */
+@font-face {
+  font-family: 'Prata';
+  src: url('/fonts/Prata.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Onest - Modern sans for body and subheadings */
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Kramola - ONLY for "Любакодъ" wordmark */
+@font-face {
+  font-family: 'Kramola';
+  src: url('/fonts/Kramola.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Light theme - Default */
+    --background: 240 4% 95%;
+    --foreground: 240 5% 10%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 240 5% 10%;
+
+    --popover: 240 5% 90%;
+    --popover-foreground: 240 5% 10%;
+
+    /* Emerald/Mint accent */
+    --primary: 258 89% 66%;
+    --primary-foreground: 250 100% 97%;
+
+    --secondary: 240 5% 33%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 4% 83%;
+    --muted-foreground: 240 5% 10%;
+
+    --accent: 269 100% 98%;
+    --accent-foreground: 270 91% 65%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 85% 97%;
+
+    --success: 160 50% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 240 4% 83%;
+    --input: 240 4% 83%;
+    --ring: 258 89% 66%;
+
+    --radius: 0.5rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 220 10% 98%;
+    --sidebar-foreground: 240 5% 10%;
+    --sidebar-primary: 258 89% 66%;
+    --sidebar-primary-foreground: 250 100% 97%;
+    --sidebar-accent: 240 5% 33%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 4% 83%;
+    --sidebar-ring: 258 89% 66%;
+    --chart-1: 255 91% 76%;
+    --chart-2: 270 95% 75%;
+    --chart-3: 234 89% 73%;
+    --chart-4: 258 89% 66%;
+    --chart-5: 240 3% 46%;
+    --sidebar: 0 0% 98%;
+    --font-sans: 'Onest', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Prata', ui-serif, Georgia, serif;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
+  }
+
+  .dark {
+    /* Dark theme - Premium Editorial */
+    --background: 240 5% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 3% 15%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 5% 26%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Emerald/Mint accent - muted, premium */
+    --primary: 255 91% 76%;
+    --primary-foreground: 261 72% 22%;
+
+    --secondary: 240 3% 46%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3% 46%;
+    --muted-foreground: 0 0% 98%;
+
+    --accent: 273 86% 20%;
+    --accent-foreground: 270 95% 75%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 85% 97%;
+
+    --success: 160 50% 40%;
+    --success-foreground: 220 10% 94%;
+
+    --border: 240 5% 33%;
+    --input: 240 5% 33%;
+    --ring: 255 91% 76%;
+
+    /* Shadows - subtle */
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 220 16% 5%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 255 91% 76%;
+    --sidebar-primary-foreground: 261 72% 22%;
+    --sidebar-accent: 270 95% 75%;
+    --sidebar-accent-foreground: 273 86% 20%;
+    --sidebar-border: 240 5% 33%;
+    --sidebar-ring: 255 91% 76%;
+    --chart-1: 252 94% 85%;
+    --chart-2: 269 97% 85%;
+    --chart-3: 229 93% 81%;
+    --chart-4: 255 91% 76%;
+    --chart-5: 240 3% 46%;
+    --sidebar: 240 3% 15%;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Smooth theme transitions */
+  html {
+    transition: color-scheme 0.4s ease;
+  }
+
+  html.transitioning,
+  html.transitioning * {
+    transition: background-color 0.4s ease, 
+                border-color 0.4s ease, 
+                color 0.4s ease,
+                box-shadow 0.4s ease,
+                fill 0.4s ease,
+                stroke 0.4s ease !important;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Onest', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Typography - Prata for H1, Onest for rest */
+  h1 {
+    font-family: 'Prata', 'Georgia', serif;
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  h2, h3 {
+    font-family: 'Onest', system-ui, sans-serif;
+    @apply font-semibold;
+    line-height: 1.2;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  .font-serif {
+    font-family: 'Prata', 'Georgia', serif;
+  }
+
+  .font-sans {
+    font-family: 'Onest', system-ui, sans-serif;
+  }
+
+  /* Brand wordmark - Kramola ONLY for "Любакодъ" */
+  .brand-wordmark {
+    font-family: 'Kramola', 'Prata', serif;
+    @apply font-bold tracking-wide;
+    letter-spacing: 0.12em;
+  }
+
+  /* Paragraph spacing */
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  /* Container with proper max-width */
+  .container-main {
+    @apply max-w-[1160px] mx-auto px-6;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  /* Card styles - clean, minimal */
+  .card-base {
+    @apply bg-card border border-border rounded-lg;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200;
+  }
+
+  .card-hover:hover {
+    @apply border-primary/30 bg-card/80;
+  }
+
+  /* Button glow - subtle, only on hover */
+  .btn-glow {
+    @apply relative;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 16px hsl(var(--primary) / 0.25);
+  }
+
+  /* Divider */
+  .divider {
+    @apply h-px bg-border;
+  }
+
+  /* Grid 12 columns */
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Badge styles */
+  .badge-default {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-muted text-muted-foreground;
+  }
+
+  .badge-primary {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary;
+  }
+
+  /* Link underline effect */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-200;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  /* Fade up animation */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.5s ease-out forwards;
+  }
+
+  /* Stagger children */
+  .stagger > * {
+    opacity: 0;
+    animation: fade-up 0.4s ease-out forwards;
+  }
+
+  .stagger > *:nth-child(1) { animation-delay: 0.05s; }
+  .stagger > *:nth-child(2) { animation-delay: 0.1s; }
+  .stagger > *:nth-child(3) { animation-delay: 0.15s; }
+  .stagger > *:nth-child(4) { animation-delay: 0.2s; }
+  .stagger > *:nth-child(5) { animation-delay: 0.25s; }
+  .stagger > *:nth-child(6) { animation-delay: 0.3s; }
+
+  /* Text selection */
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--foreground));
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Iridescent Logo Effect */
+  @keyframes iridescent-shift {
+    0% {
+      filter: brightness(1) hue-rotate(0deg) saturate(1.2);
+    }
+    25% {
+      filter: brightness(1.1) hue-rotate(60deg) saturate(1.4);
+    }
+    50% {
+      filter: brightness(1.05) hue-rotate(120deg) saturate(1.3);
+    }
+    75% {
+      filter: brightness(1.1) hue-rotate(180deg) saturate(1.4);
+    }
+    100% {
+      filter: brightness(1) hue-rotate(360deg) saturate(1.2);
+    }
+  }
+
+  @keyframes iridescent-text {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .iridescent-logo {
+    background: linear-gradient(
+      90deg,
+      hsl(280 80% 65%),
+      hsl(200 90% 60%),
+      hsl(160 70% 55%),
+      hsl(320 85% 60%),
+      hsl(260 80% 65%),
+      hsl(280 80% 65%)
+    );
+    background-size: 300% 100%;
+    animation: iridescent-text 6s ease-in-out infinite;
+    transition: animation-duration 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .dark .iridescent-logo {
+    background: linear-gradient(
+      90deg,
+      hsl(280 90% 75%),
+      hsl(200 95% 70%),
+      hsl(160 80% 65%),
+      hsl(320 90% 70%),
+      hsl(260 90% 75%),
+      hsl(280 90% 75%)
+    );
+    background-size: 300% 100%;
+  }
+
+  .iridescent-text {
+    background: linear-gradient(
+      90deg,
+      hsl(280 80% 65%),
+      hsl(200 90% 60%),
+      hsl(160 70% 55%),
+      hsl(320 85% 60%),
+      hsl(260 80% 65%),
+      hsl(280 80% 65%)
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: iridescent-text 6s ease-in-out infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  /* Hover effect - speed up animation */
+  .logo-hover-wrapper {
+    cursor: pointer;
+  }
+
+  .logo-hover-wrapper:hover .iridescent-logo {
+    animation: iridescent-text 1.5s ease-in-out infinite;
+    transform: scale(1.1);
+    filter: brightness(1.1) saturate(1.2);
+  }
+
+  .logo-hover-wrapper:hover .iridescent-text {
+    animation: iridescent-text 1.5s ease-in-out infinite;
+    filter: brightness(1.1);
+  }
+
+  .dark .iridescent-text {
+    background: linear-gradient(
+      90deg,
+      hsl(280 90% 75%),
+      hsl(200 95% 70%),
+      hsl(160 80% 65%),
+      hsl(320 90% 70%),
+      hsl(260 90% 75%),
+      hsl(280 90% 75%)
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Hide scrollbar in TMA phone frame content */
+.tma-content-scroll {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.tma-content-scroll::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TMA (Telegram Mini App) Theme Bridge Styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* TMA CSS Variables - Default fallbacks */
+:root {
+  /* Official Telegram theme vars (fallbacks for non-TMA) */
+  --tg-theme-bg-color: #ffffff;
+  --tg-theme-text-color: #000000;
+  --tg-theme-hint-color: #999999;
+  --tg-theme-link-color: #2481cc;
+  --tg-theme-button-color: #2481cc;
+  --tg-theme-button-text-color: #ffffff;
+  --tg-theme-secondary-bg-color: #f1f1f1;
+
+  /* Official Telegram layout vars (fallbacks) */
+  --tg-viewport-height: 100vh;
+  --tg-viewport-stable-height: 100vh;
+  --tg-safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --tg-safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --tg-safe-area-inset-left: env(safe-area-inset-left, 0px);
+  --tg-safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --tg-content-safe-area-inset-top: var(--tg-safe-area-inset-top);
+  --tg-content-safe-area-inset-bottom: var(--tg-safe-area-inset-bottom);
+  --tg-content-safe-area-inset-left: var(--tg-safe-area-inset-left);
+  --tg-content-safe-area-inset-right: var(--tg-safe-area-inset-right);
+
+  /* TMA aliases (source of truth = --tg-*) */
+  --tma-bg: var(--tg-theme-bg-color);
+  --tma-text: var(--tg-theme-text-color);
+  --tma-hint: var(--tg-theme-hint-color);
+  --tma-link: var(--tg-theme-link-color);
+  --tma-button: var(--tg-theme-button-color);
+  --tma-button-text: var(--tg-theme-button-text-color);
+  --tma-secondary-bg: var(--tg-theme-secondary-bg-color);
+  --tma-header-bg: var(--tg-theme-bg-color);
+  --tma-section-bg: var(--tg-theme-secondary-bg-color);
+  --tma-border: #e5e5e5;
+  --tma-destructive: #ff3b30;
+  --tma-accent: var(--tg-theme-link-color);
+
+  /* Safe area insets - defaults for non-TMA */
+  --safe-area-top: var(--tg-safe-area-inset-top);
+  --safe-area-bottom: var(--tg-safe-area-inset-bottom);
+  --safe-area-left: var(--tg-safe-area-inset-left);
+  --safe-area-right: var(--tg-safe-area-inset-right);
+
+  --tma-viewport-height: var(--tg-viewport-height);
+  --tma-viewport-stable-height: var(--tg-viewport-stable-height);
+}
+
+/* Dark theme TMA defaults */
+.dark, .tma-dark {
+  --tg-theme-bg-color: #18222d;
+  --tg-theme-text-color: #ffffff;
+  --tg-theme-hint-color: #708499;
+  --tg-theme-link-color: #6ab3f3;
+  --tg-theme-button-color: #6ab3f3;
+  --tg-theme-button-text-color: #ffffff;
+  --tg-theme-secondary-bg-color: #232e3c;
+  --tma-border: #2f3b47;
+  --tma-destructive: #ff6b6b;
+}
+
+/* TMA Mode - Applied when running inside Telegram WebApp */
+.tma-mode {
+  /* Use TMA colors for our design system tokens */
+  --background: var(--tma-bg);
+  --foreground: var(--tma-text);
+  --card: var(--tma-secondary-bg);
+  --card-foreground: var(--tma-text);
+  --primary: var(--tma-button);
+  --primary-foreground: var(--tma-button-text);
+  --muted: var(--tma-hint);
+  --muted-foreground: var(--tma-hint);
+  --border: var(--tma-border);
+  
+  /* Prevent any accidental color inversions */
+  color-scheme: light dark;
+  
+  /* Safe area support (Telegram vars as source of truth) */
+  --safe-area-top: var(--tg-safe-area-inset-top, env(safe-area-inset-top, 0px));
+  --safe-area-bottom: var(--tg-safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  --safe-area-left: var(--tg-safe-area-inset-left, env(safe-area-inset-left, 0px));
+  --safe-area-right: var(--tg-safe-area-inset-right, env(safe-area-inset-right, 0px));
+}
+
+/* TMA utility classes for safe areas */
+.pt-safe-top { padding-top: var(--safe-area-top, 0px); }
+.pb-safe-bottom { padding-bottom: var(--safe-area-bottom, 0px); }
+.pl-safe-left { padding-left: var(--safe-area-left, 0px); }
+.pr-safe-right { padding-right: var(--safe-area-right, 0px); }
+
+/* TMA-specific color utilities */
+.bg-tma-bg { background-color: var(--tma-bg); }
+.bg-tma-card { background-color: var(--tma-secondary-bg); }
+.bg-tma-section { background-color: var(--tma-section-bg); }
+.bg-tma-header { background-color: var(--tma-header-bg); }
+.bg-tma-button { background-color: var(--tma-button); }
+
+.text-tma-text { color: var(--tma-text); }
+.text-tma-hint { color: var(--tma-hint); }
+.text-tma-link { color: var(--tma-link); }
+.text-tma-button-text { color: var(--tma-button-text); }
+.text-tma-destructive { color: var(--tma-destructive); }
+.text-tma-accent { color: var(--tma-accent); }
+
+.border-tma-border { border-color: var(--tma-border); }
+
+/* TMA Environment - Disable problematic CSS */
+.tma-environment {
+  /* No filter inversions */
+  filter: none !important;
+  
+  /* Prevent backdrop-filter issues on some Android devices */
+  -webkit-backdrop-filter: none;
+}
+
+.tma-environment * {
+  /* Reset any accidental inversions */
+  filter: none;
+}
+
+/* TMA Layout helpers */
+.tma-layout {
+  /* Prevent overscroll */
+  overscroll-behavior: none;
+  
+  /* Ensure proper touch behavior */
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  
+  /* Full viewport height accounting for Telegram's UI */
+  min-height: 100vh;
+  min-height: var(--tg-viewport-height, var(--tma-viewport-height, 100vh));
+}
+
+/* TMA-optimized typography */
+.tma-mode h1 {
+  @apply text-2xl font-semibold;
+  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+}
+
+.tma-mode h2 {
+  @apply text-xl font-semibold;
+  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+}
+
+.tma-mode h3 {
+  @apply text-lg font-medium;
+  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+}
+
+.tma-mode p {
+  @apply text-base leading-relaxed;
+}
+
+/* TMA Card styling */
+.tma-card {
+  background-color: var(--tma-secondary-bg);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+/* TMA Section styling */
+.tma-section {
+  background-color: var(--tma-section-bg);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* TMA-optimized shadows (lighter for mobile) */
+.tma-mode .shadow-sm {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.tma-mode .shadow-md {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.tma-mode .shadow-lg {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Prevent text selection flicker in TMA */
+.tma-mode button,
+.tma-mode [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}

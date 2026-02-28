@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- TMA-compatible viewport with safe area support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    
+    <!-- Color scheme - let Telegram control this -->
+    <meta name="color-scheme" content="light dark" />
+    
+    <!-- Theme color for browser UI (will be overridden by Telegram in TMA mode) -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#18222d" media="(prefers-color-scheme: dark)" />
+    
+    <!-- iOS web app meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    
+    <title>ЛЮБАКОДЪ — Конструктор сайтов и Telegram Mini Apps</title>
+    <meta name="description" content="Собери сайт или Telegram Mini App. Быстро, просто, на русском." />
+    <meta name="author" content="ЛЮБАКОДЪ" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:title" content="ЛЮБАКОДЪ — Конструктор сайтов и TMA" />
+    <meta property="og:description" content="Собери сайт или Telegram Mini App. Быстро, просто, на русском." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lyubakod" />
+    <meta name="twitter:image" content="/og-image.png" />
+    
+    <!-- Telegram WebApp Script (loaded only when in Telegram) -->
+    <script>
+      // Detect if we're in Telegram and inject the SDK
+      (function() {
+        if (window.Telegram || window.TelegramWebviewProxy || 
+            navigator.userAgent.includes('Telegram') ||
+            window.location.search.includes('tgWebAppData')) {
+          var script = document.createElement('script');
+          script.src = 'https://telegram.org/js/telegram-web-app.js';
+          script.async = false;
+          document.head.appendChild(script);
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
