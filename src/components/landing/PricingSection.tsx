@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
-import { Check, Sparkles, Zap, Users } from 'lucide-react';
+import { Check, Rocket, Hammer, Building2, Zap } from 'lucide-react';
 
 interface Plan {
   id: string;
@@ -19,7 +19,7 @@ interface Plan {
 const plans: Plan[] = [
   {
     id: 'free',
-    name: 'Бесплатный',
+    name: 'Новичок',
     priceMonthly: 0,
     priceYearly: 0,
     description: 'Попробуй возможности AI-платформы',
@@ -30,11 +30,11 @@ const plans: Plan[] = [
       'Публичные проекты',
     ],
     cta: 'Начать бесплатно',
-    icon: Sparkles,
+    icon: Rocket,
   },
   {
     id: 'pro',
-    name: 'Pro',
+    name: 'Строитель',
     priceMonthly: 990,
     priceYearly: 790,
     description: 'Для тех, кто строит на полную',
@@ -46,26 +46,26 @@ const plans: Plan[] = [
       'Расширенная AI-модель',
       'Приоритетная поддержка',
     ],
-    cta: 'Выбрать Pro',
+    cta: 'Выбрать Строитель',
     popular: true,
-    icon: Zap,
+    icon: Hammer,
   },
   {
     id: 'team',
-    name: 'Команда',
+    name: 'Архитектор',
     priceMonthly: 2490,
     priceYearly: 1990,
-    description: 'Для агентств и продуктовых команд',
+    description: 'Максимум возможностей и ресурсов',
     features: [
       '2 000 рубов / мес',
-      'Всё из Pro',
+      'Всё из Строителя',
       'До 5 участников',
       'Совместная работа',
       'API-доступ',
       'White-label',
     ],
-    cta: 'Связаться',
-    icon: Users,
+    cta: 'Выбрать Архитектор',
+    icon: Building2,
   },
 ];
 

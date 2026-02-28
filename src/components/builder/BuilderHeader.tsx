@@ -111,7 +111,7 @@ export function BuilderHeader({
   const usageData = {
     credits,
     maxCredits: 50, // Free plan default
-    plan: 'Бесплатный',
+    plan: 'Новичок',
     planRubies: 50,
   };
   
@@ -376,15 +376,15 @@ export function BuilderHeader({
             <p className="text-xs font-medium text-muted-foreground">Рубы по тарифам</p>
             <div className="space-y-1.5">
               <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">Бесплатный</span>
+                <span className="text-muted-foreground">Новичок</span>
                 <span>50 рубов</span>
               </div>
               <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">Pro</span>
+                <span className="text-muted-foreground">Строитель</span>
                 <span>500 рубов</span>
               </div>
               <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">Команда</span>
+                <span className="text-muted-foreground">Архитектор</span>
                 <span>2 000 рубов</span>
               </div>
             </div>
