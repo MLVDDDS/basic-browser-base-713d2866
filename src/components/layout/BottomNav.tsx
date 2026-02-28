@@ -12,6 +12,10 @@ const navItems = [
 export const BottomNav = () => {
   const location = useLocation();
 
+  // Hide bottom nav on builder pages
+  const isBuilder = location.pathname.startsWith('/builder');
+  if (isBuilder) return null;
+
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-t border-border pb-safe">
       <div className="flex items-center justify-around h-16">
