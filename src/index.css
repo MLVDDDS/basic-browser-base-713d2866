@@ -459,31 +459,29 @@
   .iridescent-logo {
     background: linear-gradient(
       90deg,
-      hsl(45 90% 50%),
-      hsl(0 85% 45%),
-      hsl(45 95% 55%),
-      hsl(0 0% 10%),
-      hsl(0 80% 40%),
-      hsl(42 92% 52%),
-      hsl(0 85% 45%),
-      hsl(45 90% 50%)
+      hsl(175 50% 45%),
+      hsl(20 75% 55%),
+      hsl(30 80% 60%),
+      hsl(175 50% 45%),
+      hsl(20 75% 55%),
+      hsl(30 80% 60%),
+      hsl(175 50% 45%)
     );
     background-size: 400% 100%;
-    animation: iridescent-text 5s ease-in-out infinite;
-    transition: animation-duration 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+    animation: iridescent-text 4s linear infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
   }
 
   .dark .iridescent-logo {
     background: linear-gradient(
       90deg,
-      hsl(45 95% 58%),
-      hsl(0 90% 52%),
-      hsl(45 98% 62%),
-      hsl(0 0% 90%),
-      hsl(0 85% 48%),
-      hsl(42 95% 60%),
-      hsl(0 90% 52%),
-      hsl(45 95% 58%)
+      hsl(175 55% 55%),
+      hsl(25 80% 62%),
+      hsl(35 85% 68%),
+      hsl(175 55% 55%),
+      hsl(25 80% 62%),
+      hsl(35 85% 68%),
+      hsl(175 55% 55%)
     );
     background-size: 400% 100%;
   }
