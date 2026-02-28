@@ -275,28 +275,30 @@ export const BuilderDemo = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-background rounded-lg sm:rounded-xl border border-border p-3 sm:p-4 shadow-xl"
+                    className="bg-background rounded-lg sm:rounded-xl border border-border shadow-xl origin-center"
                     style={{
                       width: deviceSize === 'mobile' ? '100px' : deviceSize === 'tablet' ? '150px' : '100%',
-                      transform: 'none',
+                      transform: deviceSize === 'mobile' ? 'scale(0.85)' : 'none',
                       background: 'linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%)'
                     }}
                   >
                     {/* Website mockup content */}
-                    <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                    <div className="p-2 sm:p-4">
+                      <div className="flex items-center gap-1 sm:gap-2 mb-1.5 sm:mb-3">
+                        <div className="w-5 h-5 sm:w-8 sm:h-8 rounded-md sm:rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <Globe className="w-2.5 h-2.5 sm:w-4 sm:h-4 text-primary" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="h-1 sm:h-1.5 w-8 sm:w-16 bg-foreground/20 rounded mb-0.5" />
+                          <div className="h-0.5 sm:h-1 w-5 sm:w-10 bg-muted-foreground/20 rounded" />
+                        </div>
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="h-1 sm:h-1.5 w-10 sm:w-16 bg-foreground/20 rounded mb-0.5 sm:mb-1" />
-                        <div className="h-0.5 sm:h-1 w-6 sm:w-10 bg-muted-foreground/20 rounded" />
+                      <div className="h-1 sm:h-2.5 w-3/4 bg-foreground/20 rounded mb-1 sm:mb-2" />
+                      <div className="h-0.5 sm:h-1.5 w-full bg-muted-foreground/20 rounded mb-0.5" />
+                      <div className="h-0.5 sm:h-1.5 w-2/3 bg-muted-foreground/20 rounded mb-1.5 sm:mb-3" />
+                      <div className="h-4 sm:h-7 w-14 sm:w-24 bg-primary rounded-md sm:rounded-lg shadow-lg shadow-primary/30 flex items-center justify-center">
+                        <span className="text-[6px] sm:text-[9px] text-primary-foreground font-medium">Кнопка</span>
                       </div>
-                    </div>
-                    <div className="h-1.5 sm:h-2.5 w-3/4 bg-foreground/20 rounded mb-1.5 sm:mb-2" />
-                    <div className="h-1 sm:h-1.5 w-full bg-muted-foreground/20 rounded mb-0.5 sm:mb-1" />
-                    <div className="h-1 sm:h-1.5 w-2/3 bg-muted-foreground/20 rounded mb-2 sm:mb-3" />
-                    <div className="h-5 sm:h-7 w-16 sm:w-24 bg-primary rounded-md sm:rounded-lg shadow-lg shadow-primary/30 flex items-center justify-center">
-                      <span className="text-[7px] sm:text-[9px] text-primary-foreground font-medium">Кнопка</span>
                     </div>
                   </motion.div>
                 ) : (
