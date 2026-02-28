@@ -597,6 +597,18 @@ const Auth = ({ mode }: AuthProps) => {
                 Войти через Telegram (скоро)
               </Button>
 
+              {/* Guest access for frontend development */}
+              <Button 
+                variant="ghost" 
+                className="w-full gap-2 text-muted-foreground hover:text-foreground" 
+                size="lg"
+                onClick={() => navigate('/builder', { state: { isGuest: true } })}
+                type="button"
+              >
+                <ArrowRight className="w-4 h-4" />
+                Войти без регистрации
+              </Button>
+
             </motion.div>
 
             {/* Toggle mode */}
