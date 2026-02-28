@@ -24,7 +24,7 @@ export const PageTitle = ({
   return (
     <div className={cn(centered && 'text-center', className)}>
       <h1 className={cn(
-        'font-sans font-semibold leading-tight',
+        'font-semibold leading-tight brand-wordmark',
         sizeClasses[size]
       )}>
         {children}
