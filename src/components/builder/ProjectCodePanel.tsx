@@ -374,7 +374,7 @@ export function ProjectCodePanel({
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="sm" className="h-9 gap-2 text-xs font-medium">
+        <Button data-tour="code" variant="outline" size="sm" className="h-9 gap-2 text-xs font-medium">
           <Code2 className="h-4 w-4" />
           Код
         </Button>
