@@ -110,12 +110,9 @@ export function BuilderHeader({
   // Mock usage data (will be replaced with real data later)
   const usageData = {
     credits,
-    maxCredits: 1000,
-    tokensUsed: 24500,
-    maxTokens: 100000,
-    plan: 'Free',
-    projectsUsed: 3,
-    maxProjects: 5,
+    maxCredits: 50, // Free plan default
+    plan: 'Бесплатный',
+    planRubies: 50,
   };
   
   return (
@@ -347,14 +344,14 @@ export function BuilderHeader({
         <div className="mt-6 space-y-6">
           {/* Plan */}
           <div className="rounded-xl border border-border bg-muted/20 p-4">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Crown className="w-4 h-4 text-primary" />
                 </div>
                 <div>
                   <p className="text-sm font-medium">Тариф: {usageData.plan}</p>
-                  <p className="text-xs text-muted-foreground">Базовый доступ</p>
+                  <p className="text-xs text-muted-foreground">{usageData.planRubies} рубов / мес</p>
                 </div>
               </div>
               <Button size="sm" variant="outline" className="gap-1.5 text-xs">
@@ -364,40 +361,42 @@ export function BuilderHeader({
             </div>
           </div>
 
-          {/* Credits */}
+          {/* Rubies balance */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium flex items-center gap-1.5"><Heart className="w-3.5 h-3.5 text-primary fill-primary" />Рубы</span>
               <span className="text-sm text-muted-foreground">{usageData.credits} / {usageData.maxCredits}</span>
             </div>
             <Progress value={(usageData.credits / usageData.maxCredits) * 100} className="h-2" />
-            <p className="text-xs text-muted-foreground">Пополняются ежемесячно</p>
+            <p className="text-xs text-muted-foreground">Каждая генерация тратит рубы. Пополняются ежемесячно по тарифу.</p>
           </div>
 
-          {/* Tokens */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Токены</span>
-              <span className="text-sm text-muted-foreground">{(usageData.tokensUsed / 1000).toFixed(1)}K / {(usageData.maxTokens / 1000).toFixed(0)}K</span>
+          {/* Plan comparison hint */}
+          <div className="rounded-lg border border-border/60 bg-muted/10 p-3 space-y-2">
+            <p className="text-xs font-medium text-muted-foreground">Рубы по тарифам</p>
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-muted-foreground">Бесплатный</span>
+                <span>50 рубов</span>
+              </div>
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-muted-foreground">Pro</span>
+                <span>500 рубов</span>
+              </div>
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-muted-foreground">Команда</span>
+                <span>2 000 рубов</span>
+              </div>
             </div>
-            <Progress value={(usageData.tokensUsed / usageData.maxTokens) * 100} className="h-2" />
-          </div>
-
-          {/* Projects */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Проекты</span>
-              <span className="text-sm text-muted-foreground">{usageData.projectsUsed} / {usageData.maxProjects}</span>
-            </div>
-            <Progress value={(usageData.projectsUsed / usageData.maxProjects) * 100} className="h-2" />
           </div>
 
           {/* Buy more */}
           <div className="pt-2">
-              <Button className="w-full gap-2">
+            <Button className="w-full gap-2">
               <Heart className="w-4 h-4" />
               Докупить рубы
             </Button>
+            <p className="text-[11px] text-muted-foreground text-center mt-2">Дополнительные рубы можно купить в любой момент</p>
           </div>
         </div>
       </SheetContent>
