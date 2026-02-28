@@ -76,43 +76,83 @@ interface ProjectRow {
 const communityProjects: Project[] = [
   {
     id: 'c1',
-    name: 'SaaS Landing Pro',
+    name: 'Лендинг для SaaS',
     type: 'website',
     status: 'published',
-    slug: 'saas-landing-pro',
-    updatedAt: 'от @designer',
-    views: 5420,
+    slug: 'saas-landing',
+    updatedAt: '',
+    views: 0,
     colors: { bg: '240 10% 4%', primary: '258 89% 66%', accent: '200 100% 50%' },
   },
   {
     id: 'c2',
-    name: 'Crypto Dashboard',
+    name: 'Крипто-дашборд',
     type: 'tma',
     status: 'published',
     slug: 'crypto-dashboard',
-    updatedAt: 'от @dev_master',
-    views: 3200,
+    updatedAt: '',
+    views: 0,
     colors: { bg: '160 30% 4%', primary: '160 80% 50%', accent: '38 92% 50%' },
   },
   {
     id: 'c3',
-    name: 'Минималист портфолио',
+    name: 'Портфолио',
     type: 'website',
     status: 'published',
     slug: 'minimal-portfolio',
-    updatedAt: 'от @creative',
-    views: 2100,
+    updatedAt: '',
+    views: 0,
     colors: { bg: '0 0% 2%', primary: '0 0% 90%', accent: '0 0% 50%' },
   },
   {
     id: 'c4',
-    name: 'E-commerce TMA',
+    name: 'Магазин в Telegram',
     type: 'tma',
     status: 'published',
     slug: 'ecommerce-tma',
-    updatedAt: 'от @shop_builder',
-    views: 4500,
+    updatedAt: '',
+    views: 0,
     colors: { bg: '280 30% 6%', primary: '280 80% 60%', accent: '320 80% 50%' },
+  },
+  {
+    id: 'c5',
+    name: 'Блог о технологиях',
+    type: 'website',
+    status: 'published',
+    slug: 'tech-blog',
+    updatedAt: '',
+    views: 0,
+    colors: { bg: '210 20% 6%', primary: '210 80% 55%', accent: '45 90% 55%' },
+  },
+  {
+    id: 'c6',
+    name: 'Доставка еды',
+    type: 'tma',
+    status: 'published',
+    slug: 'food-delivery',
+    updatedAt: '',
+    views: 0,
+    colors: { bg: '25 30% 5%', primary: '25 90% 55%', accent: '0 80% 50%' },
+  },
+  {
+    id: 'c7',
+    name: 'Корпоративный сайт',
+    type: 'website',
+    status: 'published',
+    slug: 'corporate-site',
+    updatedAt: '',
+    views: 0,
+    colors: { bg: '220 15% 5%', primary: '220 70% 55%', accent: '180 60% 45%' },
+  },
+  {
+    id: 'c8',
+    name: 'Фитнес-трекер',
+    type: 'tma',
+    status: 'published',
+    slug: 'fitness-tracker',
+    updatedAt: '',
+    views: 0,
+    colors: { bg: '145 25% 5%', primary: '145 75% 50%', accent: '85 70% 55%' },
   },
 ];
 
@@ -255,33 +295,12 @@ const Dashboard = () => {
       
       <main className="pt-24 pb-16">
         <div className="container-main">
-          {/* Guest Banner */}
-          {!isAuthenticated && !authLoading && (
-            <div className="mb-6 p-4 rounded-xl bg-primary/5 border border-primary/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Users className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-medium text-foreground">Гостевой режим</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Войди, чтобы сохранять проекты и получить доступ ко всем функциям
-                  </p>
-                </div>
-              </div>
-              <Link to="/login" state={{ from: '/dashboard' }}>
-                <Button className="gap-2 whitespace-nowrap">
-                  Войти
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
-            </div>
-          )}
+          {/* Guest banner removed */}
 
           {/* Header */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
-            <PageTitle description={isAuthenticated ? "Управляй своими сайтами и Mini Apps" : "Попробуй создать свой первый проект"}>
-              {isAuthenticated ? 'Проекты' : 'Демо проекты'}
+            <PageTitle description={isAuthenticated ? "Управляй своими сайтами и Mini Apps" : "Попробуй создать свой первый проект"} size="compact">
+              Мои проекты
             </PageTitle>
             <Link to="/create">
               <Button className="gap-2 btn-glow">
@@ -343,36 +362,38 @@ const Dashboard = () => {
             </div>
           )}
 
-          {/* Toolbar */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input 
-                placeholder={tabMode === 'my' ? "Поиск проектов..." : "Поиск в сообществе..."}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
-              />
+          {/* Toolbar - search only for my projects */}
+          {tabMode === 'my' && (
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Input 
+                  placeholder="Поиск проектов..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+              <div className="flex gap-1 p-1 bg-muted rounded-lg">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`p-2 rounded transition-colors ${
+                    viewMode === 'grid' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  <LayoutGrid className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`p-2 rounded transition-colors ${
+                    viewMode === 'list' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  <List className="w-4 h-4" />
+                </button>
+              </div>
             </div>
-            <div className="flex gap-1 p-1 bg-muted rounded-lg">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-2 rounded transition-colors ${
-                  viewMode === 'grid' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                <LayoutGrid className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-2 rounded transition-colors ${
-                  viewMode === 'list' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                <List className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+          )}
 
           {/* Projects */}
           {isLoadingProjects || authLoading ? (

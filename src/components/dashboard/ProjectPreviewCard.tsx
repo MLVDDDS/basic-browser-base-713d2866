@@ -158,15 +158,6 @@ export function ProjectPreviewCard({
             </div>
           )}
 
-          {/* Views for community */}
-          {isCommunity && (
-            <div className="absolute top-2 left-2">
-              <span className="text-xs px-2 py-1 rounded-full bg-background/80 text-foreground flex items-center gap-1">
-                <Eye className="w-3 h-3" />
-                {views.toLocaleString()}
-              </span>
-            </div>
-          )}
 
           {/* Type badge */}
           <div className="absolute top-2 right-2">
@@ -189,18 +180,14 @@ export function ProjectPreviewCard({
           <div className="flex items-start justify-between gap-2 mb-3">
             <div className="flex-1 min-w-0">
               <h3 className="font-medium truncate">{name}</h3>
-              <div className="flex items-center gap-3 mt-1 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  {isCommunity ? <Users className="w-3 h-3" /> : <Clock className="w-3 h-3" />}
-                  {updatedAt}
-                </span>
-                {!isCommunity && views > 0 && (
+              {!isCommunity && (
+                <div className="flex items-center gap-3 mt-1 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
-                    <Eye className="w-3 h-3" />
-                    {views.toLocaleString()}
+                    <Clock className="w-3 h-3" />
+                    {updatedAt}
                   </span>
-                )}
-              </div>
+                </div>
+              )}
             </div>
             
             {!isCommunity && (
