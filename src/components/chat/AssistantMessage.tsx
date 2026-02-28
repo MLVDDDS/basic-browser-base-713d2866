@@ -4,7 +4,7 @@
  */
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Copy, Check } from 'lucide-react';
+import { HeartHandshake, Copy, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatMessageContent } from './utils/formatMessageContent';
 import { RunSummaryCard, type RunSummary } from './RunSummaryCard';
@@ -56,7 +56,7 @@ export function AssistantMessage({
     >
       {showAvatar && (
         <div className="w-7 h-7 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0 shadow-md shadow-primary/20">
-          <Sparkles className="w-3.5 h-3.5 text-white" />
+          <HeartHandshake className="w-3.5 h-3.5 text-white" />
         </div>
       )}
       <div className={cn(
