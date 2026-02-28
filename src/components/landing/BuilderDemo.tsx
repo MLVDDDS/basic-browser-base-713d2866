@@ -266,7 +266,7 @@ export const BuilderDemo = () => {
           {/* Preview container - FIXED size for both views */}
           <div className="flex-1 bg-gradient-to-br from-muted/20 to-muted/40 p-3 sm:p-6 flex items-center justify-center overflow-hidden">
             {/* Fixed outer container - same size for both views */}
-            <div className="w-[200px] sm:w-[260px] h-[160px] sm:h-[200px] flex items-center justify-center">
+            <div className="w-[200px] sm:w-[260px] h-[160px] sm:h-[200px] flex items-center justify-center overflow-hidden">
               <AnimatePresence mode="wait">
                 {viewType === 'website' ? (
                   <motion.div 
