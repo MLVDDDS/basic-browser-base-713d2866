@@ -192,7 +192,8 @@ export function BuilderHeader({
 
       <div className="flex-1" />
 
-      <div className="flex items-center gap-2 rounded-lg border border-border/70 bg-muted/25 px-2 py-1">
+      {/* Desktop controls */}
+      <div className="hidden md:flex items-center gap-2 rounded-lg border border-border/70 bg-muted/25 px-2 py-1">
         {projectType === 'tma' ? (
           <div className="flex items-center bg-muted/50 rounded-lg p-1 gap-0.5">
             {tmaScaleOptions.map(({ value, label }) => (
@@ -295,6 +296,23 @@ export function BuilderHeader({
             </TooltipContent>
           </Tooltip>
         )}
+      </div>
+
+      {/* Mobile: compact publish button only */}
+      <div className="flex md:hidden items-center gap-1.5">
+        <Button 
+          size="sm" 
+          className="h-8 gap-1.5 text-xs font-medium"
+          onClick={onPublish}
+          disabled={isPublishing || !project}
+        >
+          {isPublishing ? (
+            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+          ) : (
+            <Upload className="w-3.5 h-3.5" />
+          )}
+          <span className="sr-only sm:not-sr-only">Опубликовать</span>
+        </Button>
       </div>
       </div>
     </header>
