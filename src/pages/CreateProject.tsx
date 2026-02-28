@@ -425,7 +425,7 @@ const CreateProject = () => {
             
             {/* Attached files preview */}
             {fileUpload.hasFiles && (
-              <div className="absolute bottom-14 left-4 right-4">
+              <div className="absolute bottom-14 left-4 right-4 z-[3]">
                 <FilePreview 
                   files={fileUpload.files} 
                   onRemove={fileUpload.removeFile} 
