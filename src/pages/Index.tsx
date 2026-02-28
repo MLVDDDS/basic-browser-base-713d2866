@@ -9,7 +9,7 @@ import { PricingSection } from '@/components/landing/PricingSection';
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header iridescent={false} />
       <main>
         <HeroSection />
         <HowItWorksSection />
