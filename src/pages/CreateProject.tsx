@@ -374,10 +374,11 @@ const CreateProject = () => {
             </button>
             
             <div className="relative group/input">
-              {/* Animated snake border */}
-              <div className="absolute -inset-[1px] rounded-3xl opacity-0 group-focus-within/input:opacity-100 transition-opacity duration-500 overflow-hidden pointer-events-none z-20">
+              {/* Animated snake border — only the 1.5px outline */}
+              <div className="absolute -inset-[1.5px] rounded-3xl opacity-0 group-focus-within/input:opacity-100 transition-opacity duration-500 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
                 <div className="absolute inset-[-200%] animate-[snake-spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0%,transparent_60%,hsl(20_85%_55%)_75%,hsl(35_92%_62%)_85%,hsl(20_85%_55%)_95%,transparent_100%)]" />
-                <div className="absolute inset-[1px] rounded-3xl bg-background/95 backdrop-blur-sm" />
+                {/* Inner mask — cut out everything except the border ring */}
+                <div className="absolute inset-[1.5px] rounded-[calc(1.5rem-1.5px)] bg-background" />
               </div>
               
               <Textarea
@@ -387,7 +388,7 @@ const CreateProject = () => {
                 onPaste={handlePaste}
                 placeholder={`${typingPlaceholder || 'Опиши свой проект...'}${showCursor ? '|' : ''}`}
                 className={cn(
-                  "relative z-10 min-h-[120px] max-h-[240px] pl-12 pr-14 pt-4 text-lg resize-none rounded-3xl border",
+                  "relative z-[2] min-h-[120px] max-h-[240px] pl-12 pr-14 pt-4 text-lg resize-none rounded-3xl border",
                   "border-border/30 glass overflow-y-auto thin-scrollbar",
                   "focus-visible:ring-0 focus-visible:ring-offset-0 focus:border-transparent focus:bg-background/70",
                   "transition-all duration-300 shadow-lg shadow-black/5 dark:shadow-black/20",
