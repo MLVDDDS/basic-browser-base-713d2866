@@ -290,8 +290,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background" style={{ background: 'linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.4) 50%, hsl(var(--background)) 100%)' }}>
-      <Header iridescent />
+    <div className="min-h-screen bg-background">
+      <Header />
       
       <main className="pt-24 pb-16">
         <div className="container-main">

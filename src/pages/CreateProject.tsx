@@ -275,7 +275,7 @@ const CreateProject = () => {
   }, [fileUpload]);
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen relative" style={{ background: 'linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.4) 50%, hsl(var(--background)) 100%)' }}>
       {/* Iridescence Background Effect */}
       <div className="fixed inset-0 opacity-15 pointer-events-none z-0">
         <Iridescence
@@ -285,7 +285,7 @@ const CreateProject = () => {
         />
       </div>
       
-      <Header />
+      <Header iridescent />
       
       <main className="pt-24 pb-16 relative z-10">
         <div className="container mx-auto px-4 max-w-3xl">
