@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Send, ShoppingCart, User, CreditCard, Heart } from 'lucide-react';
+import { PulseDot } from '@/components/ui/PulseDot';
 
 const tmaScreens = [
   { 
@@ -106,7 +107,8 @@ export const TMASection = () => {
                   </div>
                   
                   {/* Bottom navigation */}
-                  <div className="shrink-0 border-t border-border px-1.5 sm:px-2 py-1.5 sm:py-2 flex justify-around">
+                  <div className="relative shrink-0 border-t border-border px-1.5 sm:px-2 py-1.5 sm:py-2 flex justify-around">
+                    <PulseDot position="top-right" delay={2500} size={6} />
                     {tmaScreens.map((screen) => {
                       const Icon = screen.icon;
                       return (
