@@ -384,20 +384,21 @@ export function useUnifiedOrchestrator(options: UseUnifiedOrchestratorOptions = 
             ? `Backend decision: включить backend (${confidence})`
             : `Backend decision: frontend-only (${confidence})`;
         } else if (eventType === 'backend_schema_plan') {
-          const tableCount = Number(event.summary?.tableCount || 0);
-          const featureCount = Array.isArray(event.summary?.features)
-            ? event.summary.features.length
+          const summary = (event as any).summary || {};
+          const tableCount = Number(summary.tableCount || 0);
+          const featureCount = Array.isArray(summary.features)
+            ? summary.features.length
             : 0;
           content = `Backend schema plan: ${tableCount} table(s), ${featureCount} feature signal(s)`;
         } else if (eventType === 'backend_migration_compiled') {
-          const applyCount = Number(event.summary?.applyStatements || 0);
+          const applyCount = Number(((event as any).summary)?.applyStatements || 0);
           content = `Backend migration compiled: ${applyCount} SQL statement(s)`;
         } else if (eventType === 'backend_migration_compile_failed') {
           content = `Backend migration compile failed: ${String(event.code || 'unknown')}`;
         } else if (eventType === 'backend_migration_compile_skipped') {
           content = `Backend migration compile skipped: ${String(event.reason || 'unknown')}`;
         } else if (eventType === 'backend_migration_apply_result') {
-          content = `Backend migration apply result: ${String(event.summary?.status || 'unknown')}`;
+          content = `Backend migration apply result: ${String(((event as any).summary)?.status || 'unknown')}`;
         } else if (eventType === 'backend_migration_apply_failed') {
           content = `Backend migration apply failed: ${String(event.code || 'unknown')}`;
         } else if (eventType === 'backend_migration_apply_skipped') {

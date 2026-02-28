@@ -248,7 +248,7 @@ export function TMAPreview({
     };
 
     const tgWindow = window as WindowWithTelegram;
-    tgWindow.Telegram = { WebApp: emulatedWebApp };
+    tgWindow.Telegram = { WebApp: emulatedWebApp as any };
 
     return () => {
       delete tgWindow.Telegram;

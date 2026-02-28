@@ -144,7 +144,7 @@ export function useBuilderAgentCompletion({
     }
 
     const version = await createProjectVersion(files, `Автосохранение: ${filesCreatedCount} файлов`);
-    const versionDiff = buildVersionDiff(version);
+    const versionDiff = buildVersionDiff(version as any);
     const fileOpsCount = versionDiff?.filesChanged.length || runStatsRef.current.fileOps;
     const timeline = normalizeAgentStepsToTimeline(stepList);
 

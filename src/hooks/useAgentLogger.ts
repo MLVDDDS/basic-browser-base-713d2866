@@ -22,7 +22,7 @@ export function useAgentLogger() {
     return sessionId;
   }, []);
 
-  const logStep = useCallback((step: AgentStep) => {
+  const logStep = useCallback((step: AgentStep, _meta?: Record<string, unknown>) => {
     if (!sessionIdRef.current) return;
     stepIndexRef.current += 1;
     void step;
@@ -33,7 +33,7 @@ export function useAgentLogger() {
     stepIndexRef.current += steps.length;
   }, []);
 
-  const endSession = useCallback(async () => {
+  const endSession = useCallback(async (_summary?: Record<string, unknown>) => {
     sessionIdRef.current = null;
     stepIndexRef.current = 0;
     configRef.current = null;

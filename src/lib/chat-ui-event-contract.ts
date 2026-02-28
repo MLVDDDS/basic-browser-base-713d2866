@@ -8,6 +8,8 @@ export type ChatTimelineEventType =
   | 'tool_call'
   | 'tool_result'
   | 'validation'
+  | 'plan'
+  | 'thinking'
   | 'complete'
   | 'error'
   | 'text'
