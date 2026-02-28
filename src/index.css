@@ -525,6 +525,15 @@
   }
 }
 
+@keyframes snake-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Hide scrollbar in TMA phone frame content */
 .tma-content-scroll {
   scrollbar-width: none !important;
