@@ -451,7 +451,7 @@ const Auth = ({ mode }: AuthProps) => {
           >
             <motion.div variants={itemVariants}>
               <PageTitle 
-                description={isLogin ? 'Рады видеть тебя снова' : 'Начни создавать проекты бесплатно'}
+                description={isLogin ? 'Рады видеть тебя снова' : 'Начни создавать проекты'}
                 centered
                 size="compact"
                 className="mb-8"
