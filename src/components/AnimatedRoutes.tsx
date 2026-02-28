@@ -42,6 +42,7 @@ export const AnimatedRoutes = () => {
         <Route path="/create" element={<PageTransition><CreateProject /></PageTransition>} />
         
         {/* Builder - guest mode handled internally with auth gate */}
+        <Route path="/builder" element={<PageTransition><Builder /></PageTransition>} />
         <Route path="/builder/:id" element={<PageTransition><Builder /></PageTransition>} />
         
         <Route path="/login" element={<PageTransition><Auth mode="login" /></PageTransition>} />
