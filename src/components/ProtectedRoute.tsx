@@ -30,7 +30,7 @@ export const ProtectedRoute = ({
   // Allow guest access if navigated with isGuest state
   const isGuest = (location.state as any)?.isGuest === true;
 
-  if (requireAuth && !user && !isGuest) {
+  if (requireAuth && !user && !isGuest && !import.meta.env.DEV) {
     return (
       <Navigate 
         to={redirectTo} 
