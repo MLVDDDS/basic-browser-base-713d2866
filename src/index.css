@@ -466,53 +466,31 @@
 
   .iridescent-text {
     background: linear-gradient(
-      90deg,
-      hsl(45 90% 50%),
-      hsl(0 85% 45%),
-      hsl(45 95% 55%),
-      hsl(0 0% 10%),
-      hsl(0 80% 40%),
-      hsl(42 92% 52%),
-      hsl(0 85% 45%),
-      hsl(45 90% 50%)
+      135deg,
+      hsl(12 55% 40%),
+      hsl(18 60% 48%),
+      hsl(28 65% 52%),
+      hsl(18 60% 48%),
+      hsl(12 55% 40%)
     );
-    background-size: 400% 100%;
+    background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: iridescent-text 5s ease-in-out infinite;
+    animation: iridescent-text 6s ease-in-out infinite;
     transition: transform 0.3s ease, filter 0.3s ease;
-  }
-
-  /* Hover effect - speed up animation */
-  .logo-hover-wrapper {
-    cursor: pointer;
-  }
-
-  .logo-hover-wrapper:hover .iridescent-logo {
-    animation: iridescent-text 1.2s ease-in-out infinite;
-    transform: scale(1.1);
-    filter: brightness(1.2) saturate(1.4);
-  }
-
-  .logo-hover-wrapper:hover .iridescent-text {
-    animation: iridescent-text 1.2s ease-in-out infinite;
-    filter: brightness(1.2);
   }
 
   .dark .iridescent-text {
     background: linear-gradient(
-      90deg,
-      hsl(45 95% 58%),
-      hsl(0 90% 52%),
-      hsl(45 98% 62%),
-      hsl(0 0% 90%),
-      hsl(0 85% 48%),
-      hsl(42 95% 60%),
-      hsl(0 90% 52%),
-      hsl(45 95% 58%)
+      135deg,
+      hsl(18 55% 55%),
+      hsl(24 62% 60%),
+      hsl(32 68% 65%),
+      hsl(24 62% 60%),
+      hsl(18 55% 55%)
     );
-    background-size: 400% 100%;
+    background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
