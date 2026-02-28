@@ -43,8 +43,7 @@ const sections: DocSection[] = [
   {
     title: 'Поддержка',
     links: [
-      { title: 'Частые вопросы', href: '/docs/faq', icon: MessageCircleQuestion },
-      { title: 'Помощь', href: '/docs/help', icon: HelpCircle },
+      { title: 'Помощь и FAQ', href: '/docs/faq', icon: MessageCircleQuestion },
       { title: 'Контакты', href: '/docs/contact', icon: Mail },
     ],
   },

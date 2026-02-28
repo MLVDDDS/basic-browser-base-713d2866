@@ -8,10 +8,9 @@ const allLinks = [
   { title: 'О нас', href: '/docs/about', icon: Users },
   { title: 'Возможности', href: '/docs/features', icon: Sparkles },
   { title: 'Как это работает', href: '/docs/how-it-works', icon: BookOpen },
-  { title: 'Частые вопросы', href: '/docs/faq', icon: HelpCircle },
+  { title: 'Помощь и FAQ', href: '/docs/faq', icon: HelpCircle },
   { title: 'Политика конфиденциальности', href: '/docs/privacy', icon: Shield },
   { title: 'Условия использования', href: '/docs/terms', icon: ScrollText },
-  { title: 'Помощь', href: '/docs/help', icon: Mail },
   { title: 'Контакты', href: '/docs/contact', icon: Mail },
 ];
 
