@@ -1,5 +1,5 @@
 import { DocsLayout } from '@/components/docs/DocsLayout';
-import { Sparkles, Target, Users, Zap } from 'lucide-react';
+import { Sparkles, Target, Users, Zap, Fingerprint, Timer, CircleDot, Lightbulb, Wand2, Smartphone, Globe, Eye, Ban } from 'lucide-react';
 
 const About = () => {
   return (
@@ -33,32 +33,60 @@ const About = () => {
         </h2>
         
         <div className="grid gap-4">
-          <div className="p-4 rounded-lg border border-border bg-card/50">
-            <h3 className="font-medium mb-2">◈ Уникальность</h3>
-            <p className="text-sm text-muted-foreground">
-              Каждый проект генерируется с нуля под твою идею. Никаких клонов и однотипных решений.
-            </p>
+          <div className="group p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Fingerprint className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium mb-1">Уникальность</h3>
+                <p className="text-sm text-muted-foreground">
+                  Каждый проект генерируется с нуля под твою идею. Никаких клонов и однотипных решений.
+                </p>
+              </div>
+            </div>
           </div>
           
-          <div className="p-4 rounded-lg border border-border bg-card/50">
-            <h3 className="font-medium mb-2">⌁ Скорость</h3>
-            <p className="text-sm text-muted-foreground">
-              От промпта до готового продукта за минуты. AI делает всю тяжёлую работу.
-            </p>
+          <div className="group p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Timer className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium mb-1">Скорость</h3>
+                <p className="text-sm text-muted-foreground">
+                  От промпта до готового продукта за минуты. AI делает всю тяжёлую работу.
+                </p>
+              </div>
+            </div>
           </div>
           
-          <div className="p-4 rounded-lg border border-border bg-card/50">
-            <h3 className="font-medium mb-2">◎ Простота</h3>
-            <p className="text-sm text-muted-foreground">
-              Опиши идею словами — получи готовый результат. Без сложных интерфейсов и настроек.
-            </p>
+          <div className="group p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <CircleDot className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium mb-1">Простота</h3>
+                <p className="text-sm text-muted-foreground">
+                  Опиши идею словами — получи готовый результат. Без сложных интерфейсов и настроек.
+                </p>
+              </div>
+            </div>
           </div>
           
-          <div className="p-4 rounded-lg border border-border bg-card/50">
-            <h3 className="font-medium mb-2">△ Инновации</h3>
-            <p className="text-sm text-muted-foreground">
-              Современный стек технологий и AI-генерация. Всегда на передовой.
-            </p>
+          <div className="group p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Lightbulb className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium mb-1">Инновации</h3>
+                <p className="text-sm text-muted-foreground">
+                  Современный стек технологий и AI-генерация. Всегда на передовой.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -82,28 +110,20 @@ const About = () => {
           <Zap className="w-5 h-5 text-primary" />
           Почему ЛЮБАКОДЪ?
         </h2>
-        <ul className="space-y-2 text-muted-foreground">
-          <li className="flex items-start gap-2">
-            <span className="text-primary">⬡</span>
-            AI-генерация уникального дизайна по твоему промпту
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-primary">⬡</span>
-            Сайты и Telegram Mini Apps в одной платформе
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-primary">⬡</span>
-            Мгновенная публикация в один клик
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-primary">⬡</span>
-            Современные визуальные эффекты и анимации
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-primary">⬡</span>
-            Никаких шаблонов — только твоё уникальное видение
-          </li>
-        </ul>
+        <div className="space-y-3">
+          {[
+            { icon: Wand2, text: 'AI-генерация уникального дизайна по твоему промпту' },
+            { icon: Smartphone, text: 'Сайты и Telegram Mini Apps в одной платформе' },
+            { icon: Globe, text: 'Мгновенная публикация в один клик' },
+            { icon: Sparkles, text: 'Современные визуальные эффекты и анимации' },
+            { icon: Ban, text: 'Никаких шаблонов — только твоё уникальное видение' },
+          ].map((item, i) => (
+            <div key={i} className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50">
+              <item.icon className="w-4 h-4 text-primary flex-shrink-0" />
+              <span className="text-sm text-muted-foreground">{item.text}</span>
+            </div>
+          ))}
+        </div>
       </section>
     </DocsLayout>
   );
