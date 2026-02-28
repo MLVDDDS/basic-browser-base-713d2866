@@ -5,7 +5,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useQuery } from '@tanstack/react-query';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+
 import { Progress } from '@/components/ui/progress';
 import { PageTitle } from '@/components/ui/PageTitle';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -43,7 +43,6 @@ import {
 import { ProjectPreviewCard, ProjectPreviewCardSkeleton } from '@/components/dashboard/ProjectPreviewCard';
 
 type ProjectStatus = 'published' | 'draft' | 'building' | 'error';
-type ViewMode = 'grid' | 'list';
 type TabMode = 'my' | 'community';
 
 interface Project {
@@ -201,10 +200,10 @@ const Dashboard = () => {
   const isAuthenticated = !!user;
   const apiEnabled = isApiConfigured();
   
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [tabMode, setTabMode] = useState<TabMode>('my');
-  const [searchQuery, setSearchQuery] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 8;
 
   // Fetch real projects from Supabase
   const { data: dbProjects, isLoading: isLoadingProjects, refetch } = useQuery({
@@ -245,9 +244,10 @@ const Dashboard = () => {
   }));
 
   const currentProjects = tabMode === 'my' ? userProjects : communityProjects;
-  
-  const filteredProjects = currentProjects.filter(p => 
-    p.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const totalPages = Math.ceil(currentProjects.length / ITEMS_PER_PAGE);
+  const paginatedProjects = currentProjects.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
   );
 
   const handleCopyLink = (e: React.MouseEvent, project: Project) => {
@@ -313,7 +313,7 @@ const Dashboard = () => {
           {/* Tabs */}
           <div className="flex gap-1 p-1 bg-muted rounded-lg w-fit mb-6">
             <button
-              onClick={() => setTabMode('my')}
+              onClick={() => { setTabMode('my'); setCurrentPage(1); }}
               className={`px-4 py-2 rounded text-sm font-medium transition-colors flex items-center gap-2 ${
                 tabMode === 'my' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:text-foreground'
               }`}
@@ -322,7 +322,7 @@ const Dashboard = () => {
               Мои проекты
             </button>
             <button
-              onClick={() => setTabMode('community')}
+              onClick={() => { setTabMode('community'); setCurrentPage(1); }}
               className={`px-4 py-2 rounded text-sm font-medium transition-colors flex items-center gap-2 ${
                 tabMode === 'community' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:text-foreground'
               }`}
@@ -362,69 +362,30 @@ const Dashboard = () => {
             </div>
           )}
 
-          {/* Toolbar - search only for my projects */}
-          {tabMode === 'my' && (
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <Input 
-                  placeholder="Поиск проектов..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-              <div className="flex gap-1 p-1 bg-muted rounded-lg">
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={`p-2 rounded transition-colors ${
-                    viewMode === 'grid' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <LayoutGrid className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setViewMode('list')}
-                  className={`p-2 rounded transition-colors ${
-                    viewMode === 'list' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <List className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          )}
+          {/* No toolbar - clean grid only */}
 
           {/* Projects */}
           {isLoadingProjects || authLoading ? (
-            viewMode === 'grid' ? (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {tabMode === 'my' && (
-                  <Link to="/create">
-                    <div className="h-full border-2 border-dashed border-border rounded-xl flex flex-col items-center justify-center p-8 hover:border-primary/50 hover:bg-primary/5 transition-colors cursor-pointer min-h-[280px]">
-                      <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mb-4">
-                        <Plus className="w-7 h-7 text-muted-foreground" />
-                      </div>
-                      <span className="text-muted-foreground font-medium">Создать проект</span>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {tabMode === 'my' && (
+                <Link to="/create">
+                  <div className="h-full border-2 border-dashed border-border rounded-xl flex flex-col items-center justify-center p-8 hover:border-primary/50 hover:bg-primary/5 transition-colors cursor-pointer min-h-[280px]">
+                    <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mb-4">
+                      <Plus className="w-7 h-7 text-muted-foreground" />
                     </div>
-                  </Link>
-                )}
-                {[1, 2, 3, 4].map((i) => (
-                  <ProjectPreviewCardSkeleton key={i} />
-                ))}
-              </div>
-            ) : (
-              <div className="space-y-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <ProjectListSkeleton key={i} />
-                ))}
-              </div>
-            )
-          ) : filteredProjects.length > 0 ? (
-            viewMode === 'grid' ? (
+                    <span className="text-muted-foreground font-medium">Создать проект</span>
+                  </div>
+                </Link>
+              )}
+              {[1, 2, 3, 4].map((i) => (
+                <ProjectPreviewCardSkeleton key={i} />
+              ))}
+            </div>
+          ) : paginatedProjects.length > 0 ? (
+            <>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {/* New project card - only for my projects */}
-                {tabMode === 'my' && (
+                {/* New project card - only for my projects on first page */}
+                {tabMode === 'my' && currentPage === 1 && (
                   <Link to="/create">
                     <div className="h-full border-2 border-dashed border-border rounded-xl flex flex-col items-center justify-center p-8 hover:border-primary/50 hover:bg-primary/5 transition-colors cursor-pointer min-h-[280px]">
                       <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mb-4">
@@ -435,8 +396,7 @@ const Dashboard = () => {
                   </Link>
                 )}
 
-                {/* Project cards with preview */}
-                {filteredProjects.map((project, index) => (
+                {paginatedProjects.map((project, index) => (
                   <div 
                     key={project.id}
                     className="animate-fade-in"
@@ -462,25 +422,27 @@ const Dashboard = () => {
                   </div>
                 ))}
               </div>
-            ) : (
-              <div className="space-y-2">
-                {filteredProjects.map((project, index) => (
-                  <div 
-                    key={project.id}
-                    className="animate-fade-in"
-                    style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'backwards' }}
-                  >
-                    <ProjectListItem 
-                      project={project}
-                      copiedId={copiedId}
-                      onCopyLink={handleCopyLink}
-                      onDelete={handleDeleteProject}
-                    />
-                  </div>
-                ))}
-              </div>
-            )
-          ) : tabMode === 'my' && isAuthenticated ? (
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-2 mt-8">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`w-9 h-9 rounded-lg text-sm font-medium transition-colors ${
+                        currentPage === page
+                          ? 'bg-primary text-primary-foreground shadow-sm'
+                          : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </>
+          ) : tabMode === 'my' ? (
             <div className="text-center py-20">
               <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-muted flex items-center justify-center">
                 <Plus className="w-10 h-10 text-muted-foreground" />
@@ -496,20 +458,7 @@ const Dashboard = () => {
                 </Button>
               </Link>
             </div>
-          ) : (
-            <div className="text-center py-20">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-muted flex items-center justify-center">
-                <Search className="w-10 h-10 text-muted-foreground" />
-              </div>
-              <h2 className="text-xl font-semibold mb-2">Проекты не найдены</h2>
-              <p className="text-muted-foreground mb-6">
-                Попробуй изменить поисковый запрос
-              </p>
-              <Button variant="outline" onClick={() => setSearchQuery('')}>
-                Сбросить поиск
-              </Button>
-            </div>
-          )}
+          ) : null}
         </div>
       </main>
 
