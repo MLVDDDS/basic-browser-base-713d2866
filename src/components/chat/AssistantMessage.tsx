@@ -55,8 +55,8 @@ export function AssistantMessage({
       className={cn("flex gap-2 group", className)}
     >
       {showAvatar && (
-        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0 shadow-md shadow-primary/20">
-          <HeartHandshake className="w-3.5 h-3.5 text-white" />
+        <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">
+          <HeartHandshake className="w-4 h-4 text-primary" />
         </div>
       )}
       <div className={cn(

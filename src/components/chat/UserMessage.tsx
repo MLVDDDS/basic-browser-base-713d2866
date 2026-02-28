@@ -1,12 +1,15 @@
 /**
  * 👤 UserMessage Component
  * Displays user messages with right-aligned styling
+ * Long messages are collapsible to keep chat compact
  */
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatMessageContent } from './utils/formatMessageContent';
+
+const COLLAPSE_THRESHOLD = 300; // characters
 
 interface UserMessageProps {
   content: string;
@@ -22,6 +25,8 @@ export function UserMessage({
   animationDelay = 0 
 }: UserMessageProps) {
   const [copied, setCopied] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const isLong = content.length > COLLAPSE_THRESHOLD;
 
   const handleCopy = async () => {
     try {
@@ -32,6 +37,10 @@ export function UserMessage({
       console.error('Failed to copy:', err);
     }
   };
+
+  const displayContent = isLong && !expanded 
+    ? content.slice(0, COLLAPSE_THRESHOLD) + '…' 
+    : content;
 
   return (
     <motion.div 
@@ -58,8 +67,20 @@ export function UserMessage({
           )}
         </button>
         <div className="whitespace-pre-wrap break-words leading-relaxed pr-6">
-          {formatMessageContent(content, 'user')}
+          {formatMessageContent(displayContent, 'user')}
         </div>
+        {isLong && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="flex items-center gap-1 mt-1 text-[11px] opacity-70 hover:opacity-100 transition-opacity"
+          >
+            {expanded ? (
+              <><ChevronUp className="w-3 h-3" />Свернуть</>
+            ) : (
+              <><ChevronDown className="w-3 h-3" />Показать полностью</>
+            )}
+          </button>
+        )}
         {timestamp && (
           <div className="text-[10px] mt-1.5 opacity-70 text-right">
             {new Date(timestamp).toLocaleTimeString('ru-RU', { 
