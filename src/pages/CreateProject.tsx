@@ -12,11 +12,6 @@ import { usePendingProject } from '@/hooks/usePendingProject';
 import { useFileUpload } from '@/hooks/useFileUpload';
 import { FilePreview } from '@/components/chat/FilePreview';
 import { DropZoneOverlay } from '@/components/chat/DropZoneOverlay';
-import { 
-  TemplateStyleSelector, 
-  type TemplateType, 
-  type StyleType 
-} from '@/components/create/TemplateStyleSelector';
 import { GenerationOverlay } from '@/components/create/GenerationOverlay';
 import { AuthGateOverlay } from '@/components/builder/AuthGateOverlay';
 import { 
@@ -24,30 +19,15 @@ import {
   Send, 
   Sparkles,
   Wand2,
-  ChevronDown,
-  Zap,
-  Layers,
-  Box,
-  Palette,
-  Grid3X3,
   Loader2,
-  Settings2,
   Paperclip,
 } from 'lucide-react';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible';
 
 type ProjectType = 'website' | 'tma';
 
 interface ProjectCreationData {
   projectType: ProjectType;
   prompt: string;
-  libraries: string[];
-  template: TemplateType | null;
-  style: StyleType | null;
 }
 
 const WEBSITE_PROMPTS = [
@@ -66,13 +46,6 @@ const TMA_PROMPTS = [
   'Крипто-кошелёк с балансом и историей транзакций',
 ];
 
-const LIBRARIES = [
-  { id: 'three', name: 'Three.js', icon: Box, desc: '3D графика' },
-  { id: 'framer', name: 'Framer Motion', icon: Zap, desc: 'Анимации' },
-  { id: 'tailwind', name: 'Tailwind CSS', icon: Palette, desc: 'Стили' },
-  { id: 'shadcn', name: 'shadcn/ui', icon: Layers, desc: 'Компоненты' },
-  { id: 'react-three', name: 'React Three Fiber', icon: Grid3X3, desc: '3D в React' },
-];
 
 const TYPING_PLACEHOLDERS = {
   website: [
@@ -120,13 +93,9 @@ const CreateProject = () => {
     savedProjectData?.projectType || typeFromUrl || 'website'
   );
   const [prompt, setPrompt] = useState(getInitialPrompt);
-  const [selectedLibraries, setSelectedLibraries] = useState<string[]>(savedProjectData?.libraries || ['framer', 'tailwind', 'shadcn']);
-  const [selectedTemplate, setSelectedTemplate] = useState<TemplateType | null>(savedProjectData?.template || null);
-  const [selectedStyle, setSelectedStyle] = useState<StyleType | null>(savedProjectData?.style || null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showAuthGate, setShowAuthGate] = useState(false);
-  const [showOptions, setShowOptions] = useState(false);
   const [typingPlaceholder, setTypingPlaceholder] = useState('');
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -199,11 +168,6 @@ const CreateProject = () => {
     }
   }, []);
 
-  const toggleLibrary = (id: string) => {
-    setSelectedLibraries(prev => 
-      prev.includes(id) ? prev.filter(l => l !== id) : [...prev, id]
-    );
-  };
 
   const handleGenerate = async () => {
     // Allow generation with prompt OR files
@@ -236,13 +200,10 @@ const CreateProject = () => {
       state: { 
         projectType, 
         prompt: fullPrompt, 
-        libraries: selectedLibraries, 
-        template: selectedTemplate,
-        style: selectedStyle,
         isGuest: !isAuthenticated 
       } 
     });
-  }, [navigate, projectType, prompt, selectedLibraries, selectedTemplate, selectedStyle, isAuthenticated, fileUpload]);
+  }, [navigate, projectType, prompt, isAuthenticated, fileUpload]);
   
   // File drag handlers
   const handleDragOver = useCallback((e: React.DragEvent) => {
@@ -294,11 +255,8 @@ const CreateProject = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Checkerboard background pattern - subtle transparency look */}
-      <div className="fixed inset-0 checkerboard-lg opacity-40 pointer-events-none z-0" />
-      
-      {/* Iridescence Background Effect - Fixed to cover entire page */}
-      <div className="fixed inset-0 opacity-20 pointer-events-none z-[1]">
+      {/* Iridescence Background Effect */}
+      <div className="fixed inset-0 opacity-15 pointer-events-none z-0">
         <Iridescence
           speed={0.8}
           amplitude={0.15}
@@ -479,69 +437,6 @@ const CreateProject = () => {
             </AnimatePresence>
           </div>
 
-          {/* Advanced Options - Collapsible */}
-          <Collapsible open={showOptions} onOpenChange={setShowOptions}>
-            <CollapsibleTrigger asChild>
-              <button className="w-full flex items-center justify-center gap-2 py-3 text-sm text-muted-foreground hover:text-foreground transition-colors border-t border-border/30">
-                <Settings2 className="w-4 h-4" />
-                <span>Расширенные настройки</span>
-                <ChevronDown className={cn('w-4 h-4 transition-transform', showOptions && 'rotate-180')} />
-              </button>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="pt-6 space-y-6 overflow-hidden">
-              {/* Template & Style Selector */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <TemplateStyleSelector
-                  selectedTemplate={selectedTemplate}
-                  selectedStyle={selectedStyle}
-                  onTemplateChange={setSelectedTemplate}
-                  onStyleChange={setSelectedStyle}
-                />
-              </motion.div>
-
-              {/* Libraries */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                <h3 className="text-sm font-medium mb-3">Библиотеки</h3>
-                <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2">
-                  {LIBRARIES.map((lib, index) => {
-                    const Icon = lib.icon;
-                    const isSelected = selectedLibraries.includes(lib.id);
-                    return (
-                      <motion.button
-                        key={lib.id}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.2, delay: 0.15 + index * 0.03 }}
-                        onClick={() => toggleLibrary(lib.id)}
-                        className={cn(
-                          'flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all text-sm',
-                          isSelected 
-                            ? 'glass-strong border-primary/40 text-foreground shadow-sm' 
-                            : 'glass hover:border-primary/30 hover:bg-background/60 text-muted-foreground'
-                        )}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <Icon className="w-4 h-4 flex-shrink-0" />
-                        <div className="text-left sm:text-center">
-                          <span className="block sm:inline">{lib.name}</span>
-                          <span className="block text-[10px] text-muted-foreground sm:hidden">{lib.desc}</span>
-                        </div>
-                      </motion.button>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            </CollapsibleContent>
-          </Collapsible>
         </div>
       </main>
 
