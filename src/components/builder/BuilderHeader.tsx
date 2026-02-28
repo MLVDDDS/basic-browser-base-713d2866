@@ -19,7 +19,16 @@ import {
   Upload,
   ExternalLink,
   Copy,
+  Settings,
+  ChevronDown,
 } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import type { ProjectStructure } from '@/types/project';
 import type { ProjectVersion } from '@/hooks/useProjectVersions';
 import { ProjectCodePanel } from './ProjectCodePanel';
@@ -34,6 +43,7 @@ interface BuilderHeaderProps {
   onViewModeChange: (mode: ViewMode) => void;
   tmaScale: number;
   onTmaScaleChange: (scale: number) => void;
+  onOpenSettings?: () => void;
   
   // Credits - kept for internal logic but not displayed
   credits: number;
@@ -101,9 +111,20 @@ export function BuilderHeader({
       <Logo size="sm" />
 
       {project?.name ? (
-        <div className="hidden max-w-[240px] truncate rounded-md border border-border/60 bg-muted/35 px-2.5 py-1 text-[11px] text-muted-foreground lg:block">
-          {project.name}
-        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="hidden lg:flex items-center gap-1.5 max-w-[240px] rounded-md border border-border/60 bg-muted/35 px-2.5 py-1 text-[11px] text-muted-foreground hover:bg-muted/60 hover:text-foreground transition-colors cursor-pointer">
+              <span className="truncate">{project.name}</span>
+              <ChevronDown className="w-3 h-3 flex-shrink-0 opacity-60" />
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="w-52">
+            <DropdownMenuItem className="gap-2 cursor-pointer">
+              <Settings className="w-4 h-4" />
+              Настройки проекта
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       ) : null}
       
       <div className={cn(
