@@ -285,7 +285,7 @@ const CreateProject = () => {
             centered 
             className="mb-8"
           >
-            Создать проект
+            <span style={{ fontFamily: "'Kramola', sans-serif", letterSpacing: '0.08em' }}>Создать проект</span>
           </PageTitle>
 
           {/* Project Type Toggle */}
