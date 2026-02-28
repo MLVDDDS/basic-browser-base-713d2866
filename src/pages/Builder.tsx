@@ -42,7 +42,7 @@ import {
 } from '@/features/builder/run/use-builder-submit-flow';
 import { useBuilderProjectMaintenance } from '@/features/builder/run/use-builder-project-maintenance';
 import { useBuilderStopAction } from '@/features/builder/run/use-builder-stop-action';
-import { useBuilderEffects } from '@/features/builder/actions/use-builder-effects';
+
 import { useBuilderSurfaceActions } from '@/features/builder/actions/use-builder-surface-actions';
 
 type ProjectType = 'website' | 'tma';
@@ -108,8 +108,6 @@ const Builder = () => {
     }
   }, [smartSuggestionItems]);
   
-  const [libraryCategory, setLibraryCategory] = useState<string>('all');
-  const [isLibraryOpen, setIsLibraryOpen] = useState(false);
   
   const [tmaScale, setTmaScale] = useState(1);
   
@@ -588,17 +586,6 @@ const Builder = () => {
     setPrompt(suggestion.text);
   }, []);
 
-  const { filteredEffects, handleApplyEffectFromLibrary } = useBuilderEffects({
-    libraryCategory,
-    messages,
-    setMessages,
-    projectId: project?.id,
-    addMessage,
-    reactProject: reactProject as ProjectStructure | null,
-    orchestrator,
-    setCurrentMode,
-    startRunSession,
-  });
 
   const {
     handleUndo,
@@ -675,12 +662,6 @@ const Builder = () => {
           isHealing,
           healingQueue,
           healingStats,
-          isLibraryOpen,
-          onLibraryOpenChange: setIsLibraryOpen,
-          libraryCategory,
-          onLibraryCategoryChange: setLibraryCategory,
-          filteredEffects,
-          onApplyEffect: handleApplyEffectFromLibrary,
           project,
           currentProjectStructure: reactProject as ProjectStructure | null,
           versions,
