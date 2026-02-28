@@ -71,7 +71,7 @@ export const PublishSection = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
           <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 md:mb-3">Опубликовать за 10 секунд</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-2 md:mb-3">Опубликовать за 10 секунд</h2>
             <p className="text-muted-foreground text-base md:text-lg mb-6 md:mb-8 max-w-md">
               Нажми кнопку — получи ссылку. Никаких хостингов и настроек.
             </p>
