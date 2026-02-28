@@ -18,7 +18,7 @@ export const Logo = ({ className, size = 'md' }: LogoProps) => {
       <div 
         className={cn(
           sizeClasses[size].icon, 
-          'iridescent-logo'
+          'bg-foreground'
         )}
         style={{
           WebkitMaskImage: `url(${logoSvg})`,
@@ -31,7 +31,7 @@ export const Logo = ({ className, size = 'md' }: LogoProps) => {
           maskPosition: 'center',
         }}
       />
-      <span className={cn('brand-wordmark iridescent-text', sizeClasses[size].text)}>
+      <span className={cn('brand-wordmark text-foreground', sizeClasses[size].text)}>
         ЛЮБАКОДЪ
       </span>
     </div>
