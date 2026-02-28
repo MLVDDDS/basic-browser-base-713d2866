@@ -27,7 +27,10 @@ export const ProtectedRoute = ({
     );
   }
 
-  if (requireAuth && !user) {
+  // Allow guest access if navigated with isGuest state
+  const isGuest = (location.state as any)?.isGuest === true;
+
+  if (requireAuth && !user && !isGuest) {
     return (
       <Navigate 
         to={redirectTo} 
