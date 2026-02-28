@@ -1313,9 +1313,6 @@ function GuestPreviewSkeleton({
                     Войти или зарегистрироваться
                     <ArrowRight className="w-4 h-4" />
                   </Button>
-                  <p className="text-center text-xs text-muted-foreground">
-                    Бесплатно • Без карты • 30 секунд
-                  </p>
                 </div>
               </motion.div>
             </motion.div>
