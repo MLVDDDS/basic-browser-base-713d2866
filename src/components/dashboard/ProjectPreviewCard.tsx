@@ -179,7 +179,7 @@ export function ProjectPreviewCard({
         <div className="p-4">
           <div className="flex items-start justify-between gap-2 mb-3">
             <div className="flex-1 min-w-0">
-              <h3 className="font-medium truncate">{name}</h3>
+              <h3 className="font-medium text-sm">{name}</h3>
               {!isCommunity && (
                 <div className="flex items-center gap-3 mt-1 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
