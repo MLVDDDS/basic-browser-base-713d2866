@@ -55,7 +55,7 @@ export function BuilderAuxOverlays({
           <TooltipTrigger asChild>
             <button
               onClick={onboarding.start}
-              className="fixed bottom-4 right-4 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-105 transition-transform z-50"
+              className="fixed bottom-4 right-4 w-10 h-10 rounded-full bg-primary text-primary-foreground hidden md:flex items-center justify-center shadow-lg hover:scale-105 transition-transform z-50"
             >
               <HelpCircle className="w-5 h-5" />
             </button>
