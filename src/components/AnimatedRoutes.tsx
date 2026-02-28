@@ -17,8 +17,7 @@ import PublicSite from '@/pages/PublicSite';
 import About from '@/pages/docs/About';
 import Privacy from '@/pages/docs/Privacy';
 import Terms from '@/pages/docs/Terms';
-// Help merged into FAQ
-import Contact from '@/pages/docs/Contact';
+// Help and Contact merged into FAQ
 import HowItWorks from '@/pages/docs/HowItWorks';
 import Features from '@/pages/docs/Features';
 import FAQ from '@/pages/docs/FAQ';
@@ -60,7 +59,7 @@ export const AnimatedRoutes = () => {
         <Route path="/docs/privacy" element={<Privacy />} />
         <Route path="/docs/terms" element={<Terms />} />
         <Route path="/docs/help" element={<Navigate to="/docs/faq" replace />} />
-        <Route path="/docs/contact" element={<Contact />} />
+        <Route path="/docs/contact" element={<Navigate to="/docs/faq" replace />} />
         {/* Legacy redirects */}
         <Route path="/about" element={<Navigate to="/docs/about" replace />} />
         <Route path="/privacy" element={<Navigate to="/docs/privacy" replace />} />

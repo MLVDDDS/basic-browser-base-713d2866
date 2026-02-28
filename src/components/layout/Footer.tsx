@@ -8,7 +8,6 @@ import {
   Lightbulb, 
   BookOpen, 
   HelpCircle, 
-  Mail, 
   Users, 
   Shield, 
   FileText,
@@ -32,7 +31,6 @@ export const Footer = () => {
       { label: 'Как это работает', href: '/docs/how-it-works', icon: Lightbulb },
       { label: 'Документация', href: '/docs', icon: BookOpen },
       { label: 'Помощь', href: '/docs/faq', icon: HelpCircle },
-      { label: 'Контакты', href: '/docs/contact', icon: Mail },
     ],
     company: [
       { label: 'О нас', href: '/docs/about', icon: Users },

@@ -44,7 +44,6 @@ export const Header = ({ iridescent = true }: HeaderProps) => {
   const navLinks = [
     { href: '/dashboard', label: 'Проекты' },
     { href: '/docs/faq', label: 'Помощь' },
-    { href: '/docs/contact', label: 'Контакты' },
   ];
 
   return (
