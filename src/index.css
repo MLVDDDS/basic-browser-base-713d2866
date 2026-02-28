@@ -459,13 +459,13 @@
   .iridescent-logo {
     background: linear-gradient(
       90deg,
-      hsl(175 90% 42%),
-      hsl(18 95% 55%),
-      hsl(30 100% 58%),
-      hsl(175 90% 42%),
-      hsl(18 95% 55%),
-      hsl(30 100% 58%),
-      hsl(175 90% 42%)
+      hsl(175 40% 65%),
+      hsl(30 50% 75%),
+      hsl(20 55% 80%),
+      hsl(175 40% 65%),
+      hsl(30 50% 75%),
+      hsl(20 55% 80%),
+      hsl(175 40% 65%)
     );
     background-size: 400% 100%;
     animation: iridescent-text 4s linear infinite;
@@ -475,13 +475,13 @@
   .dark .iridescent-logo {
     background: linear-gradient(
       90deg,
-      hsl(175 85% 50%),
-      hsl(22 92% 62%),
-      hsl(35 100% 65%),
-      hsl(175 85% 50%),
-      hsl(22 92% 62%),
-      hsl(35 100% 65%),
-      hsl(175 85% 50%)
+      hsl(175 45% 60%),
+      hsl(30 55% 70%),
+      hsl(20 60% 75%),
+      hsl(175 45% 60%),
+      hsl(30 55% 70%),
+      hsl(20 60% 75%),
+      hsl(175 45% 60%)
     );
     background-size: 400% 100%;
   }
@@ -489,13 +489,13 @@
   .iridescent-text {
     background: linear-gradient(
       90deg,
-      hsl(175 90% 42%),
-      hsl(18 95% 55%),
-      hsl(30 100% 58%),
-      hsl(175 90% 42%),
-      hsl(18 95% 55%),
-      hsl(30 100% 58%),
-      hsl(175 90% 42%)
+      hsl(175 40% 65%),
+      hsl(30 50% 75%),
+      hsl(20 55% 80%),
+      hsl(175 40% 65%),
+      hsl(30 50% 75%),
+      hsl(20 55% 80%),
+      hsl(175 40% 65%)
     );
     background-size: 300% 100%;
     -webkit-background-clip: text;
@@ -507,13 +507,13 @@
   .dark .iridescent-text {
     background: linear-gradient(
       90deg,
-      hsl(175 85% 50%),
-      hsl(22 92% 62%),
-      hsl(35 100% 65%),
-      hsl(175 85% 50%),
-      hsl(22 92% 62%),
-      hsl(35 100% 65%),
-      hsl(175 85% 50%)
+      hsl(175 45% 60%),
+      hsl(30 55% 70%),
+      hsl(20 60% 75%),
+      hsl(175 45% 60%),
+      hsl(30 55% 70%),
+      hsl(20 60% 75%),
+      hsl(175 45% 60%)
     );
     background-size: 300% 100%;
     -webkit-background-clip: text;
