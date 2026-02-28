@@ -173,18 +173,18 @@ export function usePromptPreprocessor(): UsePromptPreprocessorReturn {
         // Use fallback data if available
         if (data.fallback) {
           console.warn('Using fallback preprocessing result');
-          const fallbackResult: PreprocessedPrompt = {
+          const fallbackResult = {
             ...data,
             original: prompt,
             cleaned: prompt,
-          };
+          } as unknown as PreprocessedPrompt;
           setLastResult(fallbackResult);
           return fallbackResult;
         }
-        throw new Error(data.error);
+        throw new Error(data.error as string);
       }
 
-      const result = data as PreprocessedPrompt;
+      const result = data as unknown as PreprocessedPrompt;
       setLastResult(result);
       
       console.log('🧹 Prompt preprocessed:', {

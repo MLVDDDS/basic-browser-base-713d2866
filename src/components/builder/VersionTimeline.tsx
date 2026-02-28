@@ -17,6 +17,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import type { ProjectVersion } from '@/hooks/useProjectVersions';
+export type { ProjectVersion };
 
 interface VersionTimelineProps {
   versions: ProjectVersion[];

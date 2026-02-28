@@ -246,7 +246,7 @@ export function useAgentCore() {
 
           await runAgentCoreStream(
             payload,
-            (data) => {
+            (data: any) => {
               if (data.type) {
                 processAgentEvent(data);
                 if (onStep && String(data.type).includes("_end") && state.currentStep) {
