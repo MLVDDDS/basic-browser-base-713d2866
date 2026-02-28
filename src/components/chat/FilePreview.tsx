@@ -68,7 +68,7 @@ export function FilePreview({ files, onRemove, className }: FilePreviewProps) {
             >
               {/* Image thumbnail or icon */}
               {file.type === 'image' && file.url ? (
-                <div className="w-6 h-6 rounded overflow-hidden flex-shrink-0">
+                <div className="w-8 h-8 rounded overflow-hidden flex-shrink-0 border border-border/40">
                   <img 
                     src={file.url} 
                     alt={file.name}
@@ -76,8 +76,8 @@ export function FilePreview({ files, onRemove, className }: FilePreviewProps) {
                   />
                 </div>
               ) : (
-                <div className={cn("w-6 h-6 rounded flex items-center justify-center flex-shrink-0", colorClass)}>
-                  <Icon className="w-3.5 h-3.5" />
+                <div className={cn("w-8 h-8 rounded flex items-center justify-center flex-shrink-0", colorClass)}>
+                  <Icon className="w-4 h-4" />
                 </div>
               )}
               
