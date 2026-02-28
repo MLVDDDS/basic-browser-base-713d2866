@@ -2,14 +2,15 @@
  * 🎯 BuilderHeader v2.0
  * Simplified header without credits display, auto-healing UI, and effects library
  */
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/Logo';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import {
-  ChevronLeft,
+  ChevronDown,
   Smartphone,
   Monitor,
   Tablet,
@@ -20,7 +21,10 @@ import {
   ExternalLink,
   Copy,
   Settings,
-  ChevronDown,
+  Moon,
+  Sun,
+  CreditCard,
+  ArrowLeft,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -99,37 +103,52 @@ export function BuilderHeader({
   onPublish,
 }: BuilderHeaderProps) {
   const { id: urlId } = useParams<{ id: string }>();
-  const projectLabel = project?.name || project?.id || urlId || 'Проект';
-  const showProjectMenu = !!(project?.name || project?.id || urlId);
+  const navigate = useNavigate();
+  const [isDark, setIsDark] = useState(() => 
+    typeof window !== 'undefined' && document.documentElement.classList.contains('dark')
+  );
+
+  const toggleTheme = () => {
+    const newDark = !isDark;
+    setIsDark(newDark);
+    document.documentElement.classList.toggle('dark', newDark);
+    localStorage.setItem('theme', newDark ? 'dark' : 'light');
+  };
   
   return (
     <header className="h-16 border-b border-border/70 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="flex h-full items-center gap-3 px-4">
-      <Link 
-        to="/dashboard" 
-        className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </Link>
+
+      {/* Main menu (chevron down) */}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground">
+            <ChevronDown className="w-5 h-5" />
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start" className="w-56">
+          <DropdownMenuItem className="gap-2 cursor-pointer" onClick={() => navigate('/dashboard')}>
+            <ArrowLeft className="w-4 h-4" />
+            Мои проекты
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem className="gap-2 cursor-pointer" onClick={toggleTheme}>
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {isDark ? 'Светлая тема' : 'Тёмная тема'}
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem className="gap-2 cursor-pointer">
+            <Settings className="w-4 h-4" />
+            Настройки проекта
+          </DropdownMenuItem>
+          <DropdownMenuItem className="gap-2 cursor-pointer">
+            <CreditCard className="w-4 h-4" />
+            Использование
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
       
       <Logo size="sm" />
-
-      {showProjectMenu ? (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className="hidden lg:flex items-center gap-1.5 max-w-[240px] rounded-md border border-border/60 bg-muted/35 px-2.5 py-1 text-[11px] text-muted-foreground hover:bg-muted/60 hover:text-foreground transition-colors cursor-pointer">
-              <span className="truncate">{projectLabel}</span>
-              <ChevronDown className="w-3 h-3 flex-shrink-0 opacity-60" />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-52">
-            <DropdownMenuItem className="gap-2 cursor-pointer">
-              <Settings className="w-4 h-4" />
-              Настройки проекта
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      ) : null}
       
       <div className={cn(
         'hidden items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors md:flex',
