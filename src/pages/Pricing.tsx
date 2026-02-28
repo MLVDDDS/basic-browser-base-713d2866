@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { Check, Sparkles, Zap, Users, HelpCircle } from 'lucide-react';
+import { Check, Sparkles, Zap, Users, HelpCircle, Rocket, Hammer, Building2 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { PageTitle } from '@/components/ui/PageTitle';
 
@@ -22,7 +22,7 @@ interface Plan {
 const plans: Plan[] = [
   {
     id: 'free',
-    name: 'Бесплатный',
+    name: 'Новичок',
     priceMonthly: 0,
     priceYearly: 0,
     description: 'Попробуй возможности AI-платформы',
@@ -34,11 +34,11 @@ const plans: Plan[] = [
       'Базовая поддержка',
     ],
     cta: 'Начать бесплатно',
-    icon: Sparkles,
+    icon: Rocket,
   },
   {
     id: 'pro',
-    name: 'Pro',
+    name: 'Строитель',
     priceMonthly: 990,
     priceYearly: 790,
     description: 'Для тех, кто строит на полную',
@@ -52,19 +52,19 @@ const plans: Plan[] = [
       'Приоритетная поддержка',
       'Расширенная AI-модель',
     ],
-    cta: 'Выбрать Pro',
+    cta: 'Выбрать Строитель',
     popular: true,
-    icon: Zap,
+    icon: Hammer,
   },
   {
     id: 'team',
-    name: 'Команда',
+    name: 'Архитектор',
     priceMonthly: 2490,
     priceYearly: 1990,
-    description: 'Для агентств и продуктовых команд',
+    description: 'Максимум возможностей и ресурсов',
     features: [
       '2 000 рубов / мес',
-      'Всё из Pro',
+      'Всё из Строителя',
       'До 5 участников',
       'Совместная работа',
       'API-доступ',
@@ -72,8 +72,8 @@ const plans: Plan[] = [
       'SLA 99.9%',
       'Персональный менеджер',
     ],
-    cta: 'Связаться',
-    icon: Users,
+    cta: 'Выбрать Архитектор',
+    icon: Building2,
   },
 ];
 
