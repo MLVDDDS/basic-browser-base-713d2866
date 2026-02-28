@@ -61,7 +61,8 @@ export const TMASection = () => {
           <div className="order-2 lg:order-1 flex justify-center">
             <div className="relative">
               {/* Phone frame */}
-              <div className="w-[220px] sm:w-[240px] md:w-[260px] h-[440px] sm:h-[480px] md:h-[520px] bg-card rounded-[32px] sm:rounded-[36px] border-4 border-border p-1.5 sm:p-2 shadow-lg">
+              <div className="relative w-[220px] sm:w-[240px] md:w-[260px] h-[440px] sm:h-[480px] md:h-[520px] bg-card rounded-[32px] sm:rounded-[36px] border-4 border-border p-1.5 sm:p-2 shadow-lg">
+                <PulseDot position="bottom-right" delay={2500} size={8} className="-bottom-3 -right-3" />
                 {/* Screen */}
                 <div className="w-full h-full bg-background rounded-[24px] sm:rounded-[28px] overflow-hidden flex flex-col">
                   {/* Telegram header */}
@@ -107,8 +108,7 @@ export const TMASection = () => {
                   </div>
                   
                   {/* Bottom navigation */}
-                  <div className="relative shrink-0 border-t border-border px-1.5 sm:px-2 py-1.5 sm:py-2 flex justify-around">
-                    <PulseDot position="top-right" delay={2500} size={6} />
+                  <div className="shrink-0 border-t border-border px-1.5 sm:px-2 py-1.5 sm:py-2 flex justify-around">
                     {tmaScreens.map((screen) => {
                       const Icon = screen.icon;
                       return (
