@@ -118,27 +118,6 @@ export const ChatPanel = memo<ChatPanelProps>(function ChatPanel(props) {
         className
       )}
     >
-      <div className="border-b border-border/70 bg-muted/20 px-4 py-2.5">
-        <div className="flex items-center justify-between gap-3">
-          <div className="min-w-0">
-            <div className="truncate text-sm font-semibold">AI Builder</div>
-            <div className="truncate text-[11px] text-muted-foreground">
-              {isGenerating
-                ? `Запуск: ${orchestratorIteration}/${orchestratorMaxIterations}`
-                : `${messages.length} сообщений`}
-            </div>
-          </div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-background px-2.5 py-1 text-[10px] text-muted-foreground">
-            <span
-              className={cn(
-                "h-1.5 w-1.5 rounded-full",
-                isGenerating ? "bg-amber-500 animate-pulse" : "bg-emerald-500"
-              )}
-            />
-            {isGenerating ? 'Выполнение' : 'Готов'}
-          </div>
-        </div>
-      </div>
 
       <div className="flex-1 flex flex-col min-h-0">
         {/* Expand/Collapse toggle for detailed view */}
