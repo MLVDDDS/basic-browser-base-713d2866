@@ -29,6 +29,7 @@ import {
   ArrowLeft,
   Zap,
   Crown,
+  Heart,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -138,12 +139,12 @@ export function BuilderHeader({
 
           {/* Usage inline preview */}
           <DropdownMenuItem className="gap-3 cursor-pointer p-3" onClick={() => setUsageOpen(true)}>
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <Zap className="w-4 h-4 text-primary" />
+           <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <Heart className="w-4 h-4 text-primary fill-primary" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-medium">Кредиты</span>
+                <span className="text-xs font-medium">Золотые</span>
                 <span className="text-xs text-muted-foreground">{usageData.credits} / {usageData.maxCredits}</span>
               </div>
               <Progress value={(usageData.credits / usageData.maxCredits) * 100} className="h-1.5 mt-1" />
@@ -330,9 +331,6 @@ export function BuilderHeader({
               {projectType === 'tma' ? 'Telegram Mini App' : 'Сайт'}
             </div>
           </div>
-          <p className="text-xs text-muted-foreground pt-4">
-            Дополнительные настройки будут добавлены позже
-          </p>
         </div>
       </SheetContent>
     </Sheet>
@@ -369,7 +367,7 @@ export function BuilderHeader({
           {/* Credits */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Кредиты</span>
+              <span className="text-sm font-medium flex items-center gap-1.5"><Heart className="w-3.5 h-3.5 text-primary fill-primary" />Золотые</span>
               <span className="text-sm text-muted-foreground">{usageData.credits} / {usageData.maxCredits}</span>
             </div>
             <Progress value={(usageData.credits / usageData.maxCredits) * 100} className="h-2" />
@@ -396,9 +394,9 @@ export function BuilderHeader({
 
           {/* Buy more */}
           <div className="pt-2">
-            <Button className="w-full gap-2">
-              <CreditCard className="w-4 h-4" />
-              Докупить кредиты
+              <Button className="w-full gap-2">
+              <Heart className="w-4 h-4" />
+              Докупить золотые
             </Button>
           </div>
         </div>
