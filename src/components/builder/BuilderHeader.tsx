@@ -110,11 +110,11 @@ export function BuilderHeader({
       
       <Logo size="sm" />
 
-      {project?.name ? (
+      {(project?.name || project?.id) ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="hidden lg:flex items-center gap-1.5 max-w-[240px] rounded-md border border-border/60 bg-muted/35 px-2.5 py-1 text-[11px] text-muted-foreground hover:bg-muted/60 hover:text-foreground transition-colors cursor-pointer">
-              <span className="truncate">{project.name}</span>
+              <span className="truncate">{project?.name || project?.id || 'Проект'}</span>
               <ChevronDown className="w-3 h-3 flex-shrink-0 opacity-60" />
             </button>
           </DropdownMenuTrigger>
