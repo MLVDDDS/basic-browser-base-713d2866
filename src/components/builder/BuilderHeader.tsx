@@ -2,7 +2,7 @@
  * 🎯 BuilderHeader v2.0
  * Simplified header without credits display, auto-healing UI, and effects library
  */
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/Logo';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -98,6 +98,10 @@ export function BuilderHeader({
   isPublishing,
   onPublish,
 }: BuilderHeaderProps) {
+  const { id: urlId } = useParams<{ id: string }>();
+  const projectLabel = project?.name || project?.id || urlId || 'Проект';
+  const showProjectMenu = !!(project?.name || project?.id || urlId);
+  
   return (
     <header className="h-16 border-b border-border/70 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="flex h-full items-center gap-3 px-4">
@@ -110,11 +114,11 @@ export function BuilderHeader({
       
       <Logo size="sm" />
 
-      {(project?.name || project?.id) ? (
+      {showProjectMenu ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="hidden lg:flex items-center gap-1.5 max-w-[240px] rounded-md border border-border/60 bg-muted/35 px-2.5 py-1 text-[11px] text-muted-foreground hover:bg-muted/60 hover:text-foreground transition-colors cursor-pointer">
-              <span className="truncate">{project?.name || project?.id || 'Проект'}</span>
+              <span className="truncate">{projectLabel}</span>
               <ChevronDown className="w-3 h-3 flex-shrink-0 opacity-60" />
             </button>
           </DropdownMenuTrigger>
