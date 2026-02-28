@@ -11,7 +11,7 @@ const Contact = () => {
         <div className="grid gap-6">
           {/* Telegram */}
           <a 
-            href="https://t.me/lyubakod" 
+            href="https://t.me/lybacode" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-start gap-4 p-5 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-primary/50 transition-colors group"
@@ -24,13 +24,13 @@ const Contact = () => {
               <p className="text-sm text-muted-foreground mb-2">
                 Самый быстрый способ связи — отвечаем в течение часа
               </p>
-              <span className="text-sm text-primary">@lyubakod</span>
+              <span className="text-sm text-primary">@lybacode</span>
             </div>
           </a>
 
           {/* Email */}
           <a 
-            href="mailto:hello@lyubakod.app"
+            href="mailto:info@lybacode.ink"
             className="flex items-start gap-4 p-5 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-primary/50 transition-colors group"
           >
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -41,7 +41,7 @@ const Contact = () => {
               <p className="text-sm text-muted-foreground mb-2">
                 Для деловых предложений и партнёрства
               </p>
-              <span className="text-sm text-primary">hello@lyubakod.app</span>
+              <span className="text-sm text-primary">info@lybacode.ink</span>
             </div>
           </a>
 

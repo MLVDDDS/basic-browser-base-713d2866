@@ -44,7 +44,7 @@ const Help = () => {
         
         <div className="grid sm:grid-cols-2 gap-4">
           <a 
-            href="https://t.me/lyubakod" 
+            href="https://t.me/lybacode" 
             target="_blank" 
             rel="noopener noreferrer"
             className="p-4 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-primary/50 transition-colors group"
@@ -57,13 +57,13 @@ const Help = () => {
           </a>
           
           <a 
-            href="mailto:support@lyubakod.app"
+            href="mailto:info@lybacode.ink"
             className="p-4 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-primary/50 transition-colors group"
           >
             <Mail className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
             <h3 className="font-medium mb-1">Email</h3>
             <p className="text-sm text-muted-foreground">
-              support@lyubakod.app
+              info@lybacode.ink
             </p>
           </a>
         </div>

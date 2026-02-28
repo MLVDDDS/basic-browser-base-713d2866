@@ -134,7 +134,7 @@ const Privacy = () => {
         <h2 className="text-xl font-semibold mb-4">8. Контакты</h2>
         <p className="text-muted-foreground leading-relaxed">
           По вопросам, связанным с обработкой персональных данных, свяжитесь с нами через{' '}
-          <a href="https://t.me/lyubakod" className="text-primary hover:underline">
+          <a href="https://t.me/lybacode" className="text-primary hover:underline">
             Telegram
           </a>.
         </p>

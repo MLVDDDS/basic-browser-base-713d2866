@@ -52,7 +52,7 @@ export const Footer = () => {
               Сайты и Telegram Mini App за минуты.
             </p>
             <a 
-              href="https://t.me/lyubakod" 
+              href="https://t.me/lybacode" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
