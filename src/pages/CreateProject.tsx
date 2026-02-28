@@ -337,7 +337,7 @@ const CreateProject = () => {
               <TooltipTrigger asChild>
                 <button
                   onClick={() => {
-                    toast.info('Улучшение промпта будет доступно после подключения бэкенда');
+                    // TODO: подключить API улучшения промпта
                   }}
                   disabled={isGenerating || !prompt.trim()}
                   className="absolute left-4 top-4 z-[5] p-1 rounded-lg text-primary hover:text-primary/80 hover:bg-muted/50 transition-colors disabled:opacity-40 disabled:pointer-events-none"
