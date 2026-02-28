@@ -340,7 +340,7 @@ const CreateProject = () => {
                     toast.info('Улучшение промпта будет доступно после подключения бэкенда');
                   }}
                   disabled={isGenerating || !prompt.trim()}
-                  className="absolute left-4 top-4 z-10 p-1 rounded-lg text-primary hover:text-primary/80 hover:bg-muted/50 transition-colors disabled:opacity-40 disabled:pointer-events-none"
+                  className="absolute left-4 top-4 z-[5] p-1 rounded-lg text-primary hover:text-primary/80 hover:bg-muted/50 transition-colors disabled:opacity-40 disabled:pointer-events-none"
                 >
                   <Wand2 className="w-5 h-5" />
                 </button>
@@ -363,7 +363,7 @@ const CreateProject = () => {
               }}
               disabled={isGenerating || fileUpload.isUploading}
               className={cn(
-                "absolute right-4 top-4 z-10 p-2 rounded-lg",
+                "absolute right-4 top-4 z-[5] p-2 rounded-lg",
                 "text-muted-foreground hover:text-foreground hover:bg-muted/50",
                 "transition-colors",
                 fileUpload.isUploading && "animate-pulse"
@@ -407,7 +407,7 @@ const CreateProject = () => {
               </div>
             )}
             
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-end">
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-end z-[5]">
               <Button 
                 onClick={handleGenerate}
                 disabled={(!prompt.trim() && !fileUpload.hasFiles) || isGenerating}
