@@ -194,11 +194,7 @@ const CreateProject = () => {
     // Allow generation with prompt OR files
     if (!prompt.trim() && !fileUpload.hasFiles) return;
     
-    // Show auth gate for unauthenticated users
-    if (!isAuthenticated) {
-      setShowAuthGate(true);
-      return;
-    }
+    // Auth gate disabled — open access without backend
     
     setIsGenerating(true);
     setShowOverlay(true);
