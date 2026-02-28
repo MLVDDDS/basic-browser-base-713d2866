@@ -31,19 +31,22 @@ export const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         
-        {/* Protected routes - require authentication */}
-        <Route path="/dashboard" element={
-          <ProtectedRoute>
-            <PageTransition><Dashboard /></PageTransition>
-          </ProtectedRoute>
-        } />
+        {/* Dashboard - accessible to all, shows guest mode for unauthenticated */}
+        <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
         
-        {/* CreateProject is accessible to all - guest mode handled in Builder */}
         <Route path="/create" element={<PageTransition><CreateProject /></PageTransition>} />
         
-        {/* Builder - guest mode handled internally with auth gate */}
-        <Route path="/builder" element={<PageTransition><Builder /></PageTransition>} />
-        <Route path="/builder/:id" element={<PageTransition><Builder /></PageTransition>} />
+        {/* Builder - only protected route, requires auth (dev mode bypasses) */}
+        <Route path="/builder" element={
+          <ProtectedRoute>
+            <PageTransition><Builder /></PageTransition>
+          </ProtectedRoute>
+        } />
+        <Route path="/builder/:id" element={
+          <ProtectedRoute>
+            <PageTransition><Builder /></PageTransition>
+          </ProtectedRoute>
+        } />
         
         <Route path="/login" element={<PageTransition><Auth mode="login" /></PageTransition>} />
         <Route path="/signup" element={<PageTransition><Auth mode="signup" /></PageTransition>} />
