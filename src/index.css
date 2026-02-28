@@ -459,13 +459,14 @@
   .iridescent-logo {
     background: linear-gradient(
       90deg,
-      hsl(175 40% 65%),
-      hsl(30 50% 75%),
-      hsl(20 55% 80%),
-      hsl(175 40% 65%),
-      hsl(30 50% 75%),
-      hsl(20 55% 80%),
-      hsl(175 40% 65%)
+      hsl(340 80% 65%),
+      hsl(20 90% 65%),
+      hsl(40 85% 70%),
+      hsl(175 70% 55%),
+      hsl(340 80% 65%),
+      hsl(20 90% 65%),
+      hsl(40 85% 70%),
+      hsl(175 70% 55%)
     );
     background-size: 400% 100%;
     animation: iridescent-text 4s linear infinite;
@@ -475,13 +476,14 @@
   .dark .iridescent-logo {
     background: linear-gradient(
       90deg,
-      hsl(175 45% 60%),
-      hsl(30 55% 70%),
-      hsl(20 60% 75%),
-      hsl(175 45% 60%),
-      hsl(30 55% 70%),
-      hsl(20 60% 75%),
-      hsl(175 45% 60%)
+      hsl(340 85% 70%),
+      hsl(20 95% 70%),
+      hsl(40 90% 75%),
+      hsl(175 75% 60%),
+      hsl(340 85% 70%),
+      hsl(20 95% 70%),
+      hsl(40 90% 75%),
+      hsl(175 75% 60%)
     );
     background-size: 400% 100%;
   }
@@ -489,13 +491,14 @@
   .iridescent-text {
     background: linear-gradient(
       90deg,
-      hsl(175 40% 65%),
-      hsl(30 50% 75%),
-      hsl(20 55% 80%),
-      hsl(175 40% 65%),
-      hsl(30 50% 75%),
-      hsl(20 55% 80%),
-      hsl(175 40% 65%)
+      hsl(340 80% 65%),
+      hsl(20 90% 65%),
+      hsl(40 85% 70%),
+      hsl(175 70% 55%),
+      hsl(340 80% 65%),
+      hsl(20 90% 65%),
+      hsl(40 85% 70%),
+      hsl(175 70% 55%)
     );
     background-size: 300% 100%;
     -webkit-background-clip: text;
@@ -507,13 +510,14 @@
   .dark .iridescent-text {
     background: linear-gradient(
       90deg,
-      hsl(175 45% 60%),
-      hsl(30 55% 70%),
-      hsl(20 60% 75%),
-      hsl(175 45% 60%),
-      hsl(30 55% 70%),
-      hsl(20 60% 75%),
-      hsl(175 45% 60%)
+      hsl(340 85% 70%),
+      hsl(20 95% 70%),
+      hsl(40 90% 75%),
+      hsl(175 75% 60%),
+      hsl(340 85% 70%),
+      hsl(20 95% 70%),
+      hsl(40 90% 75%),
+      hsl(175 75% 60%)
     );
     background-size: 300% 100%;
     -webkit-background-clip: text;
