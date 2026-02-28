@@ -3,17 +3,10 @@
 @tailwind utilities;
 
 /* ЛЮБАКОДЪ Design System
-   Шрифты: Onest (всё), Kramola (только "Любакодъ")
+   Шрифты: Montserrat (всё), Kramola (только "Любакодъ")
 */
 
-/* Onest - Modern sans for body and subheadings */
-@font-face {
-  font-family: 'Onest';
-  src: url('/fonts/Onest.ttf') format('truetype');
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Montserrat - loaded via Google Fonts in index.html */
 
 /* Kramola - ONLY for "Любакодъ" wordmark */
 @font-face {
@@ -79,8 +72,8 @@
     --chart-4: 0 0% 65%;
     --chart-5: 0 0% 80%;
     --sidebar: 0 0% 98%;
-    --font-sans: 'Onest', ui-sans-serif, system-ui, sans-serif;
-    --font-serif: 'Onest', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
     --shadow-2xs: 0 1px 2px 0px hsl(0 0% 0% / 0.03);
     --shadow-xs: 0 1px 2px 0px hsl(0 0% 0% / 0.05);
     --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.08), 0 1px 2px -1px hsl(0 0% 0% / 0.06);
@@ -172,19 +165,19 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Onest', system-ui, -apple-system, sans-serif;
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
   }
 
-  /* Typography - Onest for everything */
+  /* Typography - Montserrat for everything */
   h1 {
-    font-family: 'Onest', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
     @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold;
     letter-spacing: -0.02em;
     line-height: 1.1;
   }
 
   h2, h3 {
-    font-family: 'Onest', system-ui, sans-serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
     @apply font-semibold;
     line-height: 1.2;
   }
@@ -199,11 +192,11 @@
   }
 
   .font-serif {
-    font-family: 'Onest', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
   }
 
   .font-sans {
-    font-family: 'Onest', system-ui, sans-serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
   }
 
   /* Brand wordmark - Kramola ONLY for "Любакодъ" */
@@ -676,17 +669,17 @@
 /* TMA-optimized typography */
 .tma-mode h1 {
   @apply text-2xl font-semibold;
-  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
 .tma-mode h2 {
   @apply text-xl font-semibold;
-  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
 .tma-mode h3 {
   @apply text-lg font-medium;
-  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
 .tma-mode p {
