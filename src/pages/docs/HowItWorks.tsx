@@ -1,4 +1,10 @@
 import { DocsLayout } from '@/components/docs/DocsLayout';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { 
   LayoutTemplate, 
   MessageSquareText, 
@@ -15,31 +21,26 @@ import {
 const steps = [
   {
     icon: LayoutTemplate,
-    num: '01',
     title: 'Выбери тип проекта',
     description: 'Сайт или Telegram Mini App — реши, что хочешь создать. Каждый формат оптимизирован под свои задачи.',
   },
   {
     icon: MessageSquareText,
-    num: '02',
     title: 'Опиши свою идею',
     description: 'Напиши промпт — расскажи AI, каким должен быть твой проект. Чем подробнее, тем точнее результат.',
   },
   {
     icon: Wand2,
-    num: '03',
     title: 'AI генерирует проект',
     description: 'Искусственный интеллект создаёт уникальный дизайн и структуру за считанные минуты.',
   },
   {
     icon: Pencil,
-    num: '04',
     title: 'Доработай при необходимости',
     description: 'Добавь детали через диалог с AI или отредактируй вручную — полный контроль в твоих руках.',
   },
   {
     icon: Globe,
-    num: '05',
     title: 'Опубликуй',
     description: 'Один клик — и твой проект доступен всему миру по уникальной ссылке.',
   },
@@ -79,44 +80,65 @@ const HowItWorks = () => {
       title="Как это работает"
       description="Пошаговый процесс создания проекта в ЛЮБАКОДЪ"
     >
-      {/* Steps */}
+      {/* Steps - accordion */}
       <section className="mb-12">
-        <div className="space-y-3">
-          {steps.map((step, index) => (
-            <div 
-              key={step.num}
-              className="group flex items-start gap-4 p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300"
-            >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                <step.icon className="w-6 h-6 text-primary" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs text-muted-foreground/50">{step.num}</span>
-                  <h3 className="font-semibold">{step.title}</h3>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-              </div>
-            </div>
-          ))}
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Wand2 className="w-4 h-4 text-primary" />
+          </div>
+          <h2 className="text-base font-semibold">Шаги</h2>
         </div>
+
+        <Accordion type="single" collapsible className="w-full">
+          {steps.map((step, index) => (
+            <AccordionItem 
+              key={index} 
+              value={`step-${index}`}
+              className="border border-border rounded-lg mb-2 px-4 bg-card/50 hover:bg-card transition-colors"
+            >
+              <AccordionTrigger className="text-left hover:no-underline py-3 text-sm">
+                <span className="flex items-center gap-2 font-medium">
+                  <step.icon className="w-4 h-4 text-primary" />
+                  <span className="text-xs text-muted-foreground/50 mr-1">0{index + 1}</span>
+                  {step.title}
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-xs pb-3">
+                {step.description}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </section>
 
-      {/* Features */}
+      {/* Highlights - accordion */}
       <section className="mb-12">
-        <h2 className="text-xl font-semibold mb-6">Что ты получаешь</h2>
-        
-        <div className="grid gap-4 sm:grid-cols-2">
-          {highlights.map((item) => (
-            <div key={item.title} className="group p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                <item.icon className="w-5 h-5 text-primary" />
-              </div>
-              <h3 className="font-medium mb-1">{item.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-            </div>
-          ))}
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Sparkles className="w-4 h-4 text-primary" />
+          </div>
+          <h2 className="text-base font-semibold">Что ты получаешь</h2>
         </div>
+
+        <Accordion type="single" collapsible className="w-full">
+          {highlights.map((item, index) => (
+            <AccordionItem 
+              key={index} 
+              value={`highlight-${index}`}
+              className="border border-border rounded-lg mb-2 px-4 bg-card/50 hover:bg-card transition-colors"
+            >
+              <AccordionTrigger className="text-left hover:no-underline py-3 text-sm">
+                <span className="flex items-center gap-2 font-medium">
+                  <item.icon className="w-4 h-4 text-primary" />
+                  {item.title}
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-xs pb-3">
+                {item.description}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </section>
 
       {/* CTA */}
