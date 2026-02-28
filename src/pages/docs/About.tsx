@@ -1,5 +1,42 @@
 import { DocsLayout } from '@/components/docs/DocsLayout';
-import { Sparkles, Target, Users, Zap, Fingerprint, Timer, CircleDot, Lightbulb, Wand2, Smartphone, Globe, Eye, Ban } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Sparkles, Target, Users, Zap, Fingerprint, Timer, CircleDot, Lightbulb, Wand2, Smartphone, Globe, Ban } from 'lucide-react';
+
+const values = [
+  {
+    icon: Fingerprint,
+    title: 'Уникальность',
+    description: 'Каждый проект генерируется с нуля под твою идею. Никаких клонов и однотипных решений.',
+  },
+  {
+    icon: Timer,
+    title: 'Скорость',
+    description: 'От промпта до готового продукта за минуты. AI делает всю тяжёлую работу.',
+  },
+  {
+    icon: CircleDot,
+    title: 'Простота',
+    description: 'Опиши идею словами — получи готовый результат. Без сложных интерфейсов и настроек.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Инновации',
+    description: 'Современный стек технологий и AI-генерация. Всегда на передовой.',
+  },
+];
+
+const whyUs = [
+  { icon: Wand2, text: 'AI-генерация уникального дизайна по твоему промпту' },
+  { icon: Smartphone, text: 'Сайты и Telegram Mini Apps в одной платформе' },
+  { icon: Globe, text: 'Мгновенная публикация в один клик' },
+  { icon: Sparkles, text: 'Современные визуальные эффекты и анимации' },
+  { icon: Ban, text: 'Никаких шаблонов — только твоё уникальное видение' },
+];
 
 const About = () => {
   return (
@@ -25,70 +62,34 @@ const About = () => {
         </p>
       </section>
 
-      {/* Values */}
+      {/* Values - accordion format like FAQ */}
       <section className="mb-12">
-        <h2 className="text-xl font-semibold mb-6 flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-primary" />
-          Наши ценности
-        </h2>
-        
-        <div className="grid gap-4">
-          <div className="group p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                <Fingerprint className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-medium mb-1">Уникальность</h3>
-                <p className="text-sm text-muted-foreground">
-                  Каждый проект генерируется с нуля под твою идею. Никаких клонов и однотипных решений.
-                </p>
-              </div>
-            </div>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Sparkles className="w-4 h-4 text-primary" />
           </div>
-          
-          <div className="group p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                <Timer className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-medium mb-1">Скорость</h3>
-                <p className="text-sm text-muted-foreground">
-                  От промпта до готового продукта за минуты. AI делает всю тяжёлую работу.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="group p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                <CircleDot className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-medium mb-1">Простота</h3>
-                <p className="text-sm text-muted-foreground">
-                  Опиши идею словами — получи готовый результат. Без сложных интерфейсов и настроек.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="group p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                <Lightbulb className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-medium mb-1">Инновации</h3>
-                <p className="text-sm text-muted-foreground">
-                  Современный стек технологий и AI-генерация. Всегда на передовой.
-                </p>
-              </div>
-            </div>
-          </div>
+          <h2 className="text-base font-semibold">Наши ценности</h2>
         </div>
+        
+        <Accordion type="single" collapsible className="w-full">
+          {values.map((value, index) => (
+            <AccordionItem 
+              key={index} 
+              value={`value-${index}`}
+              className="border border-border rounded-lg mb-2 px-4 bg-card/50 hover:bg-card transition-colors"
+            >
+              <AccordionTrigger className="text-left hover:no-underline py-3 text-sm">
+                <span className="flex items-center gap-2 font-medium">
+                  <value.icon className="w-4 h-4 text-primary" />
+                  {value.title}
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-xs pb-3">
+                {value.description}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </section>
 
       {/* Team */}
@@ -110,14 +111,8 @@ const About = () => {
           <Zap className="w-5 h-5 text-primary" />
           Почему ЛЮБАКОДЪ?
         </h2>
-        <div className="space-y-3">
-          {[
-            { icon: Wand2, text: 'AI-генерация уникального дизайна по твоему промпту' },
-            { icon: Smartphone, text: 'Сайты и Telegram Mini Apps в одной платформе' },
-            { icon: Globe, text: 'Мгновенная публикация в один клик' },
-            { icon: Sparkles, text: 'Современные визуальные эффекты и анимации' },
-            { icon: Ban, text: 'Никаких шаблонов — только твоё уникальное видение' },
-          ].map((item, i) => (
+        <div className="space-y-2">
+          {whyUs.map((item, i) => (
             <div key={i} className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50">
               <item.icon className="w-4 h-4 text-primary flex-shrink-0" />
               <span className="text-sm text-muted-foreground">{item.text}</span>
