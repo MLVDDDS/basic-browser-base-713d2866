@@ -8,7 +8,7 @@ const routeLabels: Record<string, string> = {
   'features': 'Возможности',
   'faq': 'Частые вопросы',
   'help': 'Помощь',
-  'contact': 'Контакты',
+  'contact': 'Помощь и FAQ',
   'privacy': 'Конфиденциальность',
   'terms': 'Условия использования',
 };

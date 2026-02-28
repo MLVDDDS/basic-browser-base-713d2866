@@ -182,7 +182,7 @@ export const PricingSection = () => {
                 </ul>
 
                 {/* CTA */}
-                <Link to={plan.id === 'team' ? '/contact' : '/signup'}>
+                <Link to={plan.id === 'team' ? '/docs/faq' : '/signup'}>
                   <Button 
                     variant={plan.popular ? 'default' : 'outline'} 
                     className={`w-full ${plan.popular ? 'btn-glow' : ''}`}

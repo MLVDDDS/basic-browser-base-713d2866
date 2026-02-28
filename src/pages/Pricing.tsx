@@ -226,7 +226,7 @@ const Pricing = () => {
                     } ${isSelected ? 'scale-105' : ''}`}
                     asChild
                   >
-                    <Link to={plan.id === 'team' ? '/contact' : '/signup'}>
+                    <Link to={plan.id === 'team' ? '/docs/faq' : '/signup'}>
                       {isSelected && isAnimating ? (
                         <span className="flex items-center gap-2">
                           <Check className="w-4 h-4" />
