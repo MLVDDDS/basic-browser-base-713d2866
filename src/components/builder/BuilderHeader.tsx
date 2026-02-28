@@ -31,6 +31,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import type { ProjectStructure } from '@/types/project';
@@ -108,12 +111,7 @@ export function BuilderHeader({
     typeof window !== 'undefined' && document.documentElement.classList.contains('dark')
   );
 
-  const toggleTheme = () => {
-    const newDark = !isDark;
-    setIsDark(newDark);
-    document.documentElement.classList.toggle('dark', newDark);
-    localStorage.setItem('theme', newDark ? 'dark' : 'light');
-  };
+
   
   return (
     <header className="h-16 border-b border-border/70 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -126,25 +124,35 @@ export function BuilderHeader({
             <ChevronDown className="w-5 h-5" />
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="w-56">
+          <DropdownMenuContent align="start" className="w-56">
           <DropdownMenuItem className="gap-2 cursor-pointer" onClick={() => navigate('/dashboard')}>
             <ArrowLeft className="w-4 h-4" />
             Мои проекты
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="gap-2 cursor-pointer" onClick={toggleTheme}>
-            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            {isDark ? 'Светлая тема' : 'Тёмная тема'}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem className="gap-2 cursor-pointer">
             <Settings className="w-4 h-4" />
             Настройки проекта
           </DropdownMenuItem>
-          <DropdownMenuItem className="gap-2 cursor-pointer">
-            <CreditCard className="w-4 h-4" />
-            Использование
-          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger className="gap-2 cursor-pointer">
+              {isDark ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+              Тема: {isDark ? 'тёмная' : 'светлая'}
+            </DropdownMenuSubTrigger>
+            <DropdownMenuSubContent>
+              <DropdownMenuItem className="gap-2 cursor-pointer" onClick={() => { setIsDark(false); document.documentElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); }}>
+                <Sun className="w-4 h-4" />
+                Светлая
+                {!isDark && <span className="ml-auto text-primary">✓</span>}
+              </DropdownMenuItem>
+              <DropdownMenuItem className="gap-2 cursor-pointer" onClick={() => { setIsDark(true); document.documentElement.classList.add('dark'); localStorage.setItem('theme', 'dark'); }}>
+                <Moon className="w-4 h-4" />
+                Тёмная
+                {isDark && <span className="ml-auto text-primary">✓</span>}
+              </DropdownMenuItem>
+            </DropdownMenuSubContent>
+          </DropdownMenuSub>
         </DropdownMenuContent>
       </DropdownMenu>
       
@@ -222,6 +230,16 @@ export function BuilderHeader({
           onRestoreVersion={onRestoreVersion}
         />
         <ProjectGithubControl projectId={project?.id} projectName={project?.name} />
+
+        {/* Usage indicator */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="ghost" size="icon" className="w-8 h-8 text-muted-foreground hover:text-foreground">
+              <CreditCard className="w-4 h-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>Использование</TooltipContent>
+        </Tooltip>
 
         {/* Publish Button */}
         <Button 
