@@ -21,7 +21,9 @@ import {
   Wand2,
   Loader2,
   Paperclip,
+  RefreshCw,
 } from 'lucide-react';
+import { toast } from 'sonner';
 
 type ProjectType = 'website' | 'tma';
 
@@ -367,8 +369,8 @@ const CreateProject = () => {
               onPaste={handlePaste}
               placeholder={`${typingPlaceholder || 'Опиши свой проект...'}${showCursor ? '|' : ''}`}
               className={cn(
-                "min-h-[120px] pl-12 pr-14 pt-4 text-lg resize-none rounded-3xl border",
-                "border-border/30 glass",
+                "min-h-[120px] max-h-[240px] pl-12 pr-14 pt-4 text-lg resize-none rounded-3xl border",
+                "border-border/30 glass overflow-y-auto",
                 "focus:border-primary/40 focus:bg-background/70",
                 "transition-all duration-300 shadow-lg shadow-black/5 dark:shadow-black/20",
                 fileUpload.hasFiles ? "pb-24" : "pb-16"
@@ -386,10 +388,22 @@ const CreateProject = () => {
             )}
             
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span className="text-xs text-muted-foreground">
-                {prompt.length > 0 && `${prompt.length} символов`}
-                {fileUpload.hasFiles && ` • ${fileUpload.files.length} файл(ов)`}
-              </span>
+              <div className="flex items-center gap-2">
+                {prompt.trim().length > 10 && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      toast.info('Улучшение промпта будет доступно после подключения бэкенда');
+                    }}
+                    disabled={isGenerating}
+                    className="gap-1.5 text-xs text-muted-foreground hover:text-foreground h-7 px-2"
+                  >
+                    <RefreshCw className="w-3.5 h-3.5" />
+                    Улучшить
+                  </Button>
+                )}
+              </div>
               <Button 
                 onClick={handleGenerate}
                 disabled={(!prompt.trim() && !fileUpload.hasFiles) || isGenerating}
