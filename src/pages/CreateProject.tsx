@@ -4,7 +4,7 @@ import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
-import { GradientBackground } from '@/components/effects/GradientBackground';
+import Iridescence from '@/components/effects/Iridescence';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageTitle } from '@/components/ui/PageTitle';
 import { useAuth } from '@/contexts/AuthContext';
@@ -255,8 +255,14 @@ const CreateProject = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Subtle gradient background */}
-      <GradientBackground className="fixed z-0 opacity-40" />
+      {/* Iridescence Background Effect */}
+      <div className="fixed inset-0 opacity-15 pointer-events-none z-0">
+        <Iridescence
+          speed={0.8}
+          amplitude={0.15}
+          mouseReact={true}
+        />
+      </div>
       
       <Header />
       

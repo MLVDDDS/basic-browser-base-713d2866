@@ -275,7 +275,7 @@ export const BuilderDemo = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-background rounded-lg sm:rounded-xl border border-border p-3 sm:p-4 shadow-xl overflow-hidden"
+                    className="bg-background rounded-lg sm:rounded-xl border border-border p-3 sm:p-4 shadow-xl"
                     style={{
                       width: deviceSize === 'mobile' ? '100px' : deviceSize === 'tablet' ? '150px' : '100%',
                       transform: 'none',
