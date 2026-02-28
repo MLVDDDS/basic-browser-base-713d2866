@@ -126,10 +126,7 @@ export function EmptyState({
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1 }}
       >
-        <h3 className="text-base font-semibold mb-1 brand-wordmark">{greeting}</h3>
-        <p className="text-sm text-muted-foreground">
-          Опиши что хочешь создать — я помогу
-        </p>
+        <h3 className="text-base font-semibold brand-wordmark text-muted-foreground/70">{greeting}</h3>
       </motion.div>
       
       {/* Quick start hints */}
