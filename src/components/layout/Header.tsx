@@ -20,7 +20,7 @@ interface HeaderProps {
   iridescent?: boolean;
 }
 
-export const Header = ({ iridescent = false }: HeaderProps) => {
+export const Header = ({ iridescent = true }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
