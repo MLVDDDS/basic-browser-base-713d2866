@@ -9,6 +9,7 @@ import {
   Monitor,
   MessageSquare
 } from 'lucide-react';
+import { PulseDot } from '@/components/ui/PulseDot';
 
 type ViewType = 'website' | 'tma';
 type DeviceSize = 'desktop' | 'tablet' | 'mobile';
@@ -123,7 +124,8 @@ export const BuilderDemo = () => {
         </div>
         
         {/* View type toggle */}
-        <div className="flex items-center bg-muted/50 rounded-lg p-0.5 sm:p-1 flex-shrink-0">
+        <div className="relative flex items-center bg-muted/50 rounded-lg p-0.5 sm:p-1 flex-shrink-0">
+          <PulseDot position="top-right" delay={2000} size={6} />
           <button
             onClick={() => setViewType('website')}
             className={`px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-md transition-all flex items-center gap-1 ${
@@ -216,7 +218,8 @@ export const BuilderDemo = () => {
           
           {/* Chat input */}
           <div className="p-2 sm:p-3 border-t border-border">
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-muted/50 rounded-lg sm:rounded-xl px-2 sm:px-3 py-1.5 sm:py-2">
+            <div className="relative flex items-center gap-1.5 sm:gap-2 bg-muted/50 rounded-lg sm:rounded-xl px-2 sm:px-3 py-1.5 sm:py-2">
+              <PulseDot position="top-left" delay={4000} size={6} />
               <input 
                 type="text"
                 value={inputValue}

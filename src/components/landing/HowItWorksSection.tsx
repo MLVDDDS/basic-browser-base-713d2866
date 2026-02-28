@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { FileText, Sparkles, Globe, Lightbulb, ArrowRight, Wand2, Check } from 'lucide-react';
+import { PulseDot } from '@/components/ui/PulseDot';
 
 const steps = [
   {
@@ -127,7 +128,8 @@ export const HowItWorksSection = () => {
                 </div>
 
                 {/* Suggestions */}
-                <div className="space-y-2 mb-5">
+                <div className="relative space-y-2 mb-5">
+                  <PulseDot position="top-left" delay={1500} size={7} className="left-0 -top-3" />
                   {suggestions.map((suggestion) => (
                     <button
                       key={suggestion.id}
