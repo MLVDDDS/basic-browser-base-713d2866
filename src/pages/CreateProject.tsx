@@ -255,11 +255,12 @@ const CreateProject = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Iridescence Background Effect */}
-      <div className="fixed inset-0 opacity-15 pointer-events-none z-0">
+      {/* Iridescence Background Effect — Khokhloma palette */}
+      <div className="fixed inset-0 opacity-30 dark:opacity-25 pointer-events-none z-0">
         <Iridescence
-          speed={0.8}
-          amplitude={0.15}
+          color={[0.95, 0.55, 0.15]}
+          speed={0.6}
+          amplitude={0.12}
           mouseReact={true}
         />
       </div>
