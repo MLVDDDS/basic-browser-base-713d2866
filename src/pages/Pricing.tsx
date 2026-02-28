@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { Check, Sparkles, Zap, Users, HelpCircle, Rocket, Hammer, Building2 } from 'lucide-react';
+import { Check, Sparkles, Zap, Users, Rocket, Hammer, Building2 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { PageTitle } from '@/components/ui/PageTitle';
 
@@ -75,12 +75,6 @@ const plans: Plan[] = [
   },
 ];
 
-const faqs = [
-  { q: 'Можно ли сменить тариф?', a: 'Да, вы можете перейти на другой тариф в любой момент. При апгрейде разница будет рассчитана пропорционально.' },
-  { q: 'Есть ли пробный период?', a: 'Бесплатный тариф доступен без ограничений по времени. Для Pro есть 14-дневный trial.' },
-  { q: 'Как работает оплата?', a: 'Принимаем карты РФ, СБП и криптовалюту. Счёт для юрлиц по запросу.' },
-  { q: 'Что будет с проектами при отмене?', a: 'Проекты остаются доступными, но переходят на лимиты бесплатного тарифа.' },
-];
 
 const Pricing = () => {
   const [isYearly, setIsYearly] = useState(false);
@@ -248,30 +242,6 @@ const Pricing = () => {
             })}
           </div>
 
-          {/* Comparison note */}
-          <div className="text-center mb-20">
-            <p className="text-sm text-muted-foreground">
-              Все тарифы включают SSL, CDN и 99.9% uptime. Без скрытых платежей.
-            </p>
-          </div>
-
-          {/* FAQ */}
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-2xl font-medium text-center mb-8">Частые вопросы</h2>
-            <div className="space-y-4">
-              {faqs.map((faq, i) => (
-                <div key={i} className="card-base p-5">
-                  <div className="flex items-start gap-3">
-                    <HelpCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-medium mb-1">{faq.q}</h4>
-                      <p className="text-sm text-muted-foreground">{faq.a}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </main>
 
