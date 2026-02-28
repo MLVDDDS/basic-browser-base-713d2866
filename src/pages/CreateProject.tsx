@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
@@ -104,9 +104,18 @@ const CreateProject = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   
   // File upload hook
   const fileUpload = useFileUpload();
+
+  // Clear prompt when leaving the page
+  useEffect(() => {
+    return () => {
+      setPrompt('');
+      localStorage.removeItem(PROMPT_STORAGE_KEY);
+    };
+  }, []);
 
   // Save prompt to localStorage when user is not authenticated (for recovery after auth)
   useEffect(() => {
@@ -382,6 +391,7 @@ const CreateProject = () => {
               </div>
               
               <Textarea
+                ref={textareaRef}
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleGenerate(); } }}
@@ -445,7 +455,7 @@ const CreateProject = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.2, delay: index * 0.05 }}
-                    onClick={() => setPrompt(example)}
+                    onClick={() => { setPrompt(example); setTimeout(() => textareaRef.current?.focus(), 50); }}
                     className="text-sm px-4 py-2.5 rounded-xl glass hover:bg-background/70 text-muted-foreground hover:text-foreground transition-all text-left sm:text-center sm:rounded-full sm:py-1.5 sm:px-3"
                   >
                     {example}
