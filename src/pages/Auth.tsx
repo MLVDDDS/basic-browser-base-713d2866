@@ -573,9 +573,9 @@ const Auth = ({ mode }: AuthProps) => {
                   <div ref={googleButtonRef} className="w-full max-w-sm" />
                 </div>
               ) : (
-                <Button variant="outline" className="w-full gap-3" size="lg" type="button" disabled>
+                <Button variant="outline" className="w-full gap-3" size="lg" type="button" onClick={() => { /* TODO: подключить Google OAuth */ }}>
                   <GoogleIcon />
-                  Google вход не настроен
+                  Войти через Google
                 </Button>
               )}
               {googleClientId && !googleReady && (
