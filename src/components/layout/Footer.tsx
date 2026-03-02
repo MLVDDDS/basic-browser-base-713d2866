@@ -13,7 +13,6 @@ import {
   FileText,
   LucideIcon
 } from 'lucide-react';
-import footerBrandImage from '@/assets/footer-brand.jpeg';
 
 interface FooterLink {
   label: string;
@@ -59,13 +58,6 @@ export const Footer = () => {
               <Send className="w-4 h-4" />
               Telegram
             </a>
-            <div className="mt-6 rounded-lg overflow-hidden">
-              <img 
-                src={footerBrandImage} 
-                alt="ЛЮБАКОДЪ" 
-                className="w-full max-w-[240px] h-auto rounded-lg object-cover"
-              />
-            </div>
           </div>
 
           {/* Links */}
