@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Send, Globe, Mic } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BuilderDemo } from './BuilderDemo';
+import footerBrandImage from '@/assets/footer-brand.jpeg';
 
 const heroOptions = [
   { text: 'сайт', icon: Globe },
@@ -120,8 +121,21 @@ export const HeroSection = () => {
           </div>
 
           {/* Right column - Interactive Builder Demo */}
-          <div className="lg:pl-4 xl:pl-8">
+          <div className="lg:pl-4 xl:pl-8 flex flex-col gap-4">
             <BuilderDemo />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="rounded-xl overflow-hidden border border-border shadow-2xl shadow-primary/5 max-w-[600px]"
+            >
+              <img 
+                src={footerBrandImage} 
+                alt="ЛЮБАКОДЪ — 3D логотип" 
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </motion.div>
           </div>
         </div>
       </div>
