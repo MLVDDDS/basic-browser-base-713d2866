@@ -8,7 +8,7 @@ import {
 import { 
   Sparkles, Target, Users, Zap, Fingerprint, Timer, CircleDot, Lightbulb, 
   Wand2, Smartphone, Globe, Ban, Code2, Brain, Blocks, Rocket, 
-  Instagram, ExternalLink, Layers, Server, Cpu
+  Instagram, ExternalLink, Layers, Server, Cpu, Linkedin
 } from 'lucide-react';
 
 const values = [
@@ -44,16 +44,18 @@ const whyUs = [
 
 const teamMembers = [
   {
-    name: 'Mlad',
+    name: 'Mlad (Михаил Н.)',
     role: 'Co-Founder & AI Engineer',
     experience: 'AI/ML инженер и блокчейн-разработчик. Опыт в создании AI-powered продуктов, проектировании нейросетевых пайплайнов и разработке децентрализованных приложений.',
     instagram: 'https://www.instagram.com/__mlad__',
+    linkedin: 'https://www.linkedin.com/in/mikhail-nasonov/',
   },
   {
-    name: 'Max Biiruza',
+    name: 'Max Biiruza (Максим Н.)',
     role: 'Co-Founder & Full-Stack Developer',
     experience: 'Full-stack разработчик с экспертизой в AI-интеграциях и блокчейн-технологиях. Специализация на построении масштабируемых веб-платформ и Telegram Mini Apps.',
     instagram: 'https://www.instagram.com/max.biiruza',
+    linkedin: 'https://www.linkedin.com/in/maksim-novikov-dev/',
   },
 ];
 
