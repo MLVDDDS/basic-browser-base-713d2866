@@ -1,47 +1,12 @@
-import { Suspense, lazy } from 'react';
-import { Header } from '@/components/layout/Header';
-import { HeroSection } from '@/components/landing/HeroSection';
-
-const Footer = lazy(() => import('@/components/layout/Footer').then((module) => ({ default: module.Footer })));
-const HowItWorksSection = lazy(() =>
-  import('@/components/landing/HowItWorksSection').then((module) => ({ default: module.HowItWorksSection }))
-);
-const PublishSection = lazy(() =>
-  import('@/components/landing/PublishSection').then((module) => ({ default: module.PublishSection }))
-);
-const TMASection = lazy(() =>
-  import('@/components/landing/TMASection').then((module) => ({ default: module.TMASection }))
-);
-const PricingSection = lazy(() =>
-  import('@/components/landing/PricingSection').then((module) => ({ default: module.PricingSection }))
-);
-
-function SectionFallback({ heightClass = 'min-h-[24rem]' }: { heightClass?: string }) {
-  return <div className={heightClass} aria-hidden="true" />;
-}
+// Update this page (the content is just a fallback if you fail to update the page)
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header iridescent={false} />
-      <main>
-        <HeroSection />
-        <Suspense fallback={<SectionFallback />}>
-          <HowItWorksSection />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <TMASection />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <PublishSection />
-        </Suspense>
-        <Suspense fallback={<SectionFallback heightClass="min-h-[28rem]" />}>
-          <PricingSection />
-        </Suspense>
-      </main>
-      <Suspense fallback={<SectionFallback heightClass="min-h-[16rem]" />}>
-        <Footer />
-      </Suspense>
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <div className="text-center">
+        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
+        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+      </div>
     </div>
   );
 };
