@@ -7,6 +7,7 @@ import { TMASection } from '@/components/landing/TMASection';
 import { PricingSection } from '@/components/landing/PricingSection';
 
 const Index = () => {
+  // Sync test marker: 2026-03-18 14:36:46 +07
   return (
     <div className="min-h-screen bg-background">
       <Header iridescent={false} />
