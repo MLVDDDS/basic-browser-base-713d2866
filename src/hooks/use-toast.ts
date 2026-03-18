@@ -3,7 +3,7 @@ import * as React from "react";
 import type { ToastActionElement, ToastProps } from "@/components/ui/toast";
 
 const TOAST_LIMIT = 1;
-const TOAST_REMOVE_DELAY = 5000; // 5 seconds auto-hide
+const TOAST_REMOVE_DELAY = 1000000;
 
 type ToasterToast = ToastProps & {
   id: string;
@@ -134,38 +134,7 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, "id">;
 
-// Track recent toast messages to prevent duplicates
-const recentToasts = new Map<string, number>();
-const DEDUPE_INTERVAL = 3000; // 3 seconds
-
-function getToastKey(props: Toast): string {
-  return `${props.title || ''}-${props.description || ''}-${props.variant || 'default'}`;
-}
-
 function toast({ ...props }: Toast) {
-  // Check for duplicate toasts
-  const key = getToastKey(props);
-  const now = Date.now();
-  const lastShown = recentToasts.get(key);
-  
-  if (lastShown && now - lastShown < DEDUPE_INTERVAL) {
-    // Skip duplicate toast
-    return {
-      id: '',
-      dismiss: () => {},
-      update: () => {},
-    };
-  }
-  
-  recentToasts.set(key, now);
-  
-  // Clean up old entries
-  for (const [k, timestamp] of recentToasts.entries()) {
-    if (now - timestamp > DEDUPE_INTERVAL) {
-      recentToasts.delete(k);
-    }
-  }
-
   const id = genId();
 
   const update = (props: ToasterToast) =>
