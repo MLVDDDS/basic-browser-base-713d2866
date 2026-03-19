@@ -1,17 +1,16 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+// Keep Vite config dependency-light to avoid native/plugin install issues in this environment.
+export default defineConfig(() => ({
   server: {
     host: "::",
-    port: 8899,
+    port: 8080,
     hmr: {
       overlay: false,
     },
   },
-  plugins: [react()],
+  plugins: [],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
